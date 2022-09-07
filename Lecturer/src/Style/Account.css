@@ -1,0 +1,73 @@
+.Account_cover{
+    height: 630px;
+    width: 100%;
+    background-color: white;
+    
+   justify-content: center;
+   align-items: center;
+}
+.img_cover{
+    width: 100%;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 20%;
+    left: 20%;
+}
+.Account_form{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content:center;
+    align-items: center;
+}
+.row_Accinput{
+    width: 100%;
+    height: 100px; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.Acc_input{
+    height: 50px;
+    width: 600px;
+    border-width: 2px;
+    background-color: whitesmoke;
+ 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+.input{
+    height: 50px;
+    width: 500px; 
+}
+.Acc_column{
+    display: flex;
+    flex-direction: column;
+    justify-content:space-around;
+    align-items: center;
+}
+.button_cover{
+    width: 100%;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.profile_pic{
+    top: 20px;
+    height: 100px;
+    width: 100px;
+    border-radius: 50px;
+
+}
+.right_box_shadow{
+    top: 100px;
+width: 100%;
+display: flex;
+justify-content: center;
+align-items: center;
+}

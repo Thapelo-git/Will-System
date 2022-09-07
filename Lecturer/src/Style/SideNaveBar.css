@@ -1,0 +1,236 @@
+*{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.nav-main-container{
+    /* height: 670px; */
+    width: 100%;                                       
+    display: flex;
+    flex-direction: row;
+    justify-content:flex-start;
+    align-items:flex-start;
+    position: absolute;
+    
+}
+
+.inner-container{
+    height: 600px;
+    width: 200px;
+    background-color: black;
+    display: flex;
+   flex-direction: column;
+    justify-content:center;
+    align-items:center;
+    /* top: 20%; */
+}
+.inner_Container{
+    background-color: white;
+    width: 70%;
+    height: 650px;
+    /* position: absolute; */
+    left: 15%;
+
+    border-top-left-radius: 30px  ;
+    border-bottom-left-radius: 30px;
+}
+.logo{
+    top: 0;
+    height: 200px;
+    /* position: absolute; */
+    width: 200px;
+    object-fit: fill;
+}
+
+
+.nav-menu{
+    display: flex;
+  justify-content: space-between;
+    /* margin-bottom: 20%; */
+    padding: 25px ;
+    border-radius: 6px;
+  transition: 0.3s all ease;
+  cursor: pointer;
+  height: fit-content;
+  color: white;
+ 
+    
+
+}
+.loguot-btn{
+    padding: 18px 25px;
+    border-radius: 6px;
+  transition: 0.3s all ease;
+  cursor: pointer;
+  height: fit-content;
+  color: white;
+  bottom: 0;  
+}
+.SidebarList{
+    height: 300px;
+    padding: 0;
+    width: 100%;
+    display: flex;
+flex-direction: column;
+justify-content:space-around;
+align-items:stretch;
+
+}
+ .row{
+ width: 100%; 
+ height: 40px;
+ /* border: 1px solid white; */
+list-style-type: none;
+left: 0px;
+
+/* transform: rotate(-90deg); */
+color: white; 
+
+font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+/* 1658909356328R
+
+infor@RPANUGGETS.com
+sub:RPA Intern Remote Role */
+.row:hover{
+    cursor: pointer;
+    background-color: yellow;
+    color: #000;
+    width:100%;
+    height: 40px;
+    left: 0px;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.row .nav-icon{
+    flex: 30%;
+    display: grid;
+    place-items: center;
+}
+.row .title{
+    /* flex: 70%; */
+    place-items: center;
+}
+/* .nav-menu{
+    background: linear-gradient(145deg,#e2e8ec,#ffffff);
+    box-shadow: 4px 4px 8px #cbcbcb,4px -4px 8px #ffffff;
+} */
+.nav-menu ul li a{
+    transition: 0.5s;
+    font-size: 20px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    
+}
+.nav-menu:hover{
+    background-color: yellow;
+    color: black;
+    margin: 20px;
+    margin-top: 30%;
+    margin-left: 15%;
+}
+
+.nav-icons{
+   
+    width: 50%;
+    float: left;
+}
+.loguot-btn button{
+    /* background: linear-gradient(145deg,#e2e8ec,#ffffff); */
+    background: red;
+  box-shadow: 4px 4px 8px #cbcbcb,4px -4px 8px #ffffff;
+  padding: 18px 25px;
+  border-radius: 6px;
+  transition: 0.5s all ease;
+  cursor: pointer;
+  color: #000;
+
+}
+.loguot-btn p{
+    transition: 0.5s;
+    font-size: 20px;
+    font-weight: 500;
+    letter-spacing: 1px;
+}
+
+.boxRow{
+    width: 100%;
+    height: 120px;
+    display: flex;
+    flex-direction:row;
+    justify-content:space-around;
+    align-items:center;
+}
+.numberBox{
+    width: 500px;
+    height: 300px;
+    border-radius: 10px;
+    border-width: 1px;
+    justify-content: center;
+    align-items: center;
+}
+@media only screen and (max-width:600px){
+    .default{
+        display: none;
+    }
+    .default-mobile{
+        display: block;
+        
+    }
+    .separator{
+        height: 200px;
+    }
+        .nav-links-mobile{
+        
+        position: absolute;
+        display: block;
+        list-style: none;
+        box-shadow: rgba(50, 50, 93, 0.23)0 50px 100px -20px,rgba(0, 0, 0, 0.3)0 30px 60px -30;
+        transition: all 0.5s ease-in-out;
+        width: 100%;
+        height: 100vh;
+        z-index: 888;
+    }
+    .logo{display: none;}
+    /* .close,.open{
+        position: absolute;
+        top: 35px;
+        right: 20px;
+        color:#000;
+        display: block;
+        font-size: 25px;
+        z-index: 999;
+    } */
+    .toggle{
+        display: flex;
+        justify-content: flex-end;
+        align-items: flex-end;
+        width: 100%;
+        height: 50px;
+     background-color: #ce3a3a;
+     top: 0%;
+    }
+    .SidebarList{
+        height: 300px;
+        padding: 0;
+        width: 100%;
+        position: absolute;
+        display: flex;
+    flex-direction: column;
+    justify-content:space-around;
+    align-items:stretch;
+    }
+    
+    .inner-container{
+        height: 200px;
+        width: 100%;
+        background-color: black;
+        display: flex;
+       position: absolute;
+        justify-content:center;
+        align-items:center;
+        top: 0%;
+    }
+    }
