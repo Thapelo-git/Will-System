@@ -6,9 +6,9 @@ import {  useNavigate } from 'react-router-dom'
 function AddScreen() {
   let navigate =useNavigate()
   const values={
-    name:'',surname:'',age:'',IDnumber:'',
-    Arrestdesc:'',mentality:'',
-  sentence:'',caseDesc:''
+    name:'',surname:'',IDnumber:'',
+    UniversityName:'',
+    monthNum:'',faculty:''
   
   }
 
@@ -46,9 +46,9 @@ function AddScreen() {
     );
   };
   const [initialState,setState]=useState(values)
-  const {name,surname,age,IDnumber,
-    Arrestdesc,mentality,
-  sentence,caseDesc
+  const {name,surname,IDnumber,
+    UniversityName,
+    monthNum,faculty
 
 }=initialState
 
@@ -61,10 +61,10 @@ function AddScreen() {
   }
   const handleSubmit = (e)=>{
     e.preventDefault();
-    
-        db.ref('Puser').push({name,surname,age,IDnumber,
-          Arrestdesc,mentality,
-          sentence,caseDesc,url})
+     
+        db.ref('Student').push({name,surname,IDnumber,
+          UniversityName,
+          monthNum,faculty,url})
        navigate('dashboard/*')
 }
   return (
@@ -81,7 +81,8 @@ function AddScreen() {
       <div className='img_row'>
       <input name="url" onChange={handleImgChange} style={{width:'50%'}} type="file" class="form-control"
       placeholder={url} />
-              <button className="btn-success" onClick={handleUpload}>Upload</button>
+      {/* className="btn-success" */}
+              <button className='button' onClick={handleUpload}>Upload</button>
               <progress value={progress} max="1000" />
               </div>
       {/* <div className='img_cover'>
@@ -120,8 +121,8 @@ function AddScreen() {
       <div className='input_row'>
           <div className='input_column'>
           <label>University Name</label>
-            <select class="custom-select" id="gender3" name='Arrestdesc'
-          value={Arrestdesc} onChange={handleInputChange} >
+            <select class="custom-select" id="gender3" name='UniversityName'
+          value={UniversityName} onChange={handleInputChange} >
             <option selected>Choose...</option>
             <option  name="TUT" >TUT</option>
             <option name="UL" >UL</option>
@@ -147,13 +148,13 @@ function AddScreen() {
           </div> */}
           <div className='input_column'>
           <label>Total number of Months required</label>
-            <input name='sentence' type='number' className='input_infor' required="required"
-            onChange={handleInputChange} value={sentence}/>
+            <input name='monthNum' type='number' className='input_infor' required="required"
+            onChange={handleInputChange} value={monthNum}/>
           </div>
           <div className='input_column'>
           <label> Name of Faculty</label>
-            <input name='caseDesc' type='text' className='input_infor' required="required" 
-            onChange={handleInputChange} value={caseDesc}/>
+            <input name='faculty' type='text' className='input_infor' required="required" 
+            onChange={handleInputChange} value={faculty}/>
           </div>
         </div>
        
