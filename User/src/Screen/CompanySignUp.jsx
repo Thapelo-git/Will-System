@@ -13,7 +13,7 @@ import { auth,db } from '../../firebase'
 
 const deviceHeight=Dimensions.get("window").height
 const deviceWidth=Dimensions.get("window").width
-const CompanySignUp = () => {
+const CompanySignUp = ({navigation}) => {
     const [isPasswordShow,setPasswordShow]=useState(false)
     const phoneRegExp = /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/
     const ReviewSchem=yup.object({
@@ -60,6 +60,7 @@ const CompanySignUp = () => {
       }
   return (
     <View>
+        
       <View style={{width:deviceWidth *0.9,top:10,}}>
       <Formik
         initialValues={{name:'',phonenumber:'',email:'',password:'',confirmpassword:''}}
@@ -71,6 +72,7 @@ const CompanySignUp = () => {
         >
             {(props)=>(
                 <>
+               
             <View style={{ paddingHorizontal:15,
         marginHorizontal:15,}}>
             <Text style={{fontWeight:'bold'}}>Company Name</Text>
@@ -135,6 +137,7 @@ const CompanySignUp = () => {
                 </View>
             </View>
             <Text style={{color:'red',marginTop:-15}}>{props.touched.phonenumber && props.errors.phonenumber}</Text>
+        
             <View style={{height:7}}></View>
             <View style={{ paddingHorizontal:15,
         marginHorizontal:15,}}>
@@ -190,11 +193,12 @@ const CompanySignUp = () => {
             </View>
             <Text style={{color:'red',marginTop:-15}}>{props.touched.confirmpassword && props.errors.confirmpassword}</Text>
             <TouchableOpacity style={styles.signinButton}
-            // onPress={()=>navigation.navigate('RegisterPhone')}
-            onPress={props.handleSubmit}
+           onPress={() => navigation.navigate('SignupSteps')}
+            // onPress={props.handleSubmit}
             >
                 <Text style={styles.signinButtonText}>Create Account</Text>
             </TouchableOpacity>
+            
             </>
                 )}
             </Formik>

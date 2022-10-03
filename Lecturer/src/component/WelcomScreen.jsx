@@ -49,7 +49,7 @@ function WelcomScreen() {
             </div>
            
             </div>
-            <div className='forgetPassword_container'>
+            <div className='heading'>
               <p  onClick={()=>setPage(2)} className='forgetPassword'>ForgetPassword</p></div>
         </div>
         

@@ -1,87 +1,128 @@
-import React,{useState,useEffect} from 'react'
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
-import TimePicker from 'react-time-picker';
-import { db } from '../firebase';
-import '../Style/Visists.css'
-function Visits() {
-  let temDate=new Date()
-  let nowTime=temDate.getDate()+'/'+(temDate.getMonth()+1)+'/'+temDate.getFullYear()
-    const [startDate, setStartDate] = useState(temDate);
-    const [time, setTime] = useState('10:00');
-    const [Visits,setVisits]=useState([])
-    let startDateone=startDate.getDate()+'/'+(startDate.getMonth()+1)+'/'+startDate.getFullYear()
-    const handleSubmit=()=>{
-      
-      db.ref('Visits').push({startDateone,time})
-    }
-    useEffect(()=>{
-      db.ref('Visits').on('value',(snapshot)=>{
-        setVisits({
-          ...snapshot.val(),
-        })
-      })
-    },[])
+import React,{useEffect,useState} from 'react'
+import styled from 'styled-components'
+import Table from 'react-bootstrap/Table'
+import { db } from '../firebase'
+import {FaCheckCircle,FaTimesCircle} from 'react-icons/fa'
+const StatusTD=styled.td`
+font-weight:bold;
+color:${(props)=>(props.type === "Pending" ? "blue":"")}
+color:${(props)=>(props.type === "Accepted" ? "green" :"")}
+color:${(props)=> (props.type === "Rejected"?"red":"")}
+`
+const Visits = () => {
+  const [Interveiws,setInterviews]=useState([])
+  useEffect(()=>{
 
-    const handleDateChange=(e)=>{
-     
-      setStartDate(
-       e
-        );
+  
+    db.ref('Student').on('value',snap=>{
       
-    }
-    const onDelete =(id)=>{
-      db.ref(`/Visits/${id}`).remove()
-     
-     }
-    console.log(startDateone,'dfghjkdfghjk')
+      setInterviews({...snap.val() });
+      
+
+    }) 
+  },[])
+  console.log(Interveiws)
+  const updateBooking = (index, status) => {
+
+    db.ref('Student').child(index).update({Status:status})
+    .then(()=>db.ref('Interview').once('value'))
+    .then(snapshot=>snapshot.val())
+    .catch(error => ({
+      errorCode: error.code,
+      errorMessage: error.message
+    }));
+    
+    
+  };
   return (
-      <>
-      <div className='heading'>
-        <h3>Update Visits</h3>
+    <div>
+       <div className='heading'>
+        <h2> Reports(Completed tasks)</h2>
       </div>
-      <div className='pickers'>
-        <div>
-          <p>Enter Date </p>
-          {/* value={startDate} */}
-        <DatePicker selected={startDate}  dateFormat='yyyy/MM/dd' 
-         onChange={handleDateChange} value={startDate} name='startDate'/>
-        {/* <p>{startDateone}</p> */}
-        </div>
-        <div>
-          <p>Enter Time</p>
-          <TimePicker onChange={setTime} value={time} />
-        </div>
-      
-    
-      </div>
-      <div className='button_cover'>
-      <button className='button'
-      onClick={()=>handleSubmit()}><h4 className='button_Lable'>Submit</h4></button>
-      </div>
-      <div>
-      {
-        Object.keys(Visits).map((id)=>
-        <div className='visits_list'>
-        <div className='conView'>
-          <div className='innerView'>
-          <h4>Date</h4>
-          <p>{Visits[id].startDateone}</p>
-          
-          <h4>Time</h4>
-          <p>{Visits[id].time}</p>
-          </div>
-          <button className='deletebtn' onClick={()=>onDelete(id)}>Delete</button>
-        </div>
-        
-          
-       
-        </div>
-        )
-      }
-      </div>
-    
-    </>
+          {Interveiws ? (
+        <Table
+          striped
+          bordered
+          hover
+          size="sm"
+          style={{ marginTop: "10px", width: "100%" }}
+        >
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Student Number</th>
+              <th>Phone Number</th>
+              <th>Email</th>
+              <th>Name</th>
+              <th>Surname</th>
+              
+              
+              {/* <th>Status</th>
+              <th>Accept</th>
+              <th>Reject</th> */}
+            </tr>
+          </thead>
+          <tbody>
+            {Object.keys(Interveiws).map((id,booking) => (
+
+           
+
+
+
+  
+
+              <tr key={Interveiws.id}>
+                
+              <>
+              
+               
+                  <td>{id}</td>
+                  <td>{Interveiws[id].email}</td>
+                  <td>{Interveiws[id].phonenumber}</td>
+                  
+                  {/* <td>{Interveiws[id].title}</td>
+                  <td>{Interveiws[id].desc}</td>
+                  <td>{Interveiws[id].interviewDate}</td>
+                  <td>{Interveiws[id].interviewTime}</td> */}
+                  <StatusTD type={Interveiws[id].Status}>{Interveiws[id].Status}</StatusTD>
+                  {Interveiws[id].Status === "Pending" ? (
+                    <>
+                      <td style={{ textAlign: "center" }}>
+                        <FaCheckCircle
+                          color="green"
+                          style={{
+                            cursor: "pointer",
+                            fontSize: "20px",
+                          }}
+                          onClick={() => updateBooking(id, "Accepted")}
+                        />
+                      </td>
+                      <td style={{ textAlign: "center" }}>
+ 
+                        <FaTimesCircle
+                          color="red"
+                          style={{
+                            cursor: "pointer",
+                            fontSize: "20px",
+                          }}
+                          onClick={() => updateBooking(id, "Rejected")}
+                        />
+                      </td>
+                    </>
+                  ) : (
+                    <></>
+                  )}
+                  
+                 
+                </>
+                 
+                 
+              </tr>
+             
+            ))}
+          </tbody>
+        </Table>):(<h1>Nothing</h1>)}
+    </div>
   )
 }
 

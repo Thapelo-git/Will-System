@@ -10,6 +10,7 @@ import SignupScreen from './src/Screen/SignupScreen';
 import SigninScreen from './src/Screen/SigninScreen';
 import TabScreen from './src/Screen/TabScreen';
 import SearchScreen from './src/Screen/SearchScreen';
+import SignupSteps from './src/Screen/SignupSteps';
 const Stack = createNativeStackNavigator()
 export default function App() {
   const [signedIn,setSignedIn]=useState(false)
@@ -33,6 +34,7 @@ export default function App() {
               <Stack.Screen name="Welcome" component={GetStarted}/> 
               <Stack.Screen name="Signup" component={SignupScreen}/> 
               <Stack.Screen name="Signin" component={SigninScreen}/> 
+              <Stack.Screen name="SignupSteps" component={SignupSteps}/>
               {/* <Stack.Screen name="forgetPassword" component={forgetPassword}/>
               <Stack.Screen name="RegisterPhone" component={RegisterPhone}/>  */}
               </Stack.Navigator>
@@ -46,6 +48,7 @@ export default function App() {
           <Stack.Screen name="UserDetails" component={UserDetails}/> */}
           <Stack.Screen name="Companyhome" component={TabScreen}/>
            <Stack.Screen name="Search" component={SearchScreen}/>
+           
           {/*<Stack.Screen name="PolLocation" component={PolLocation}/>
           <Stack.Screen name="PolProfile" component={PolProfile}/>
           <Stack.Screen name="PolUserDetails" component={PolUserDetails}/>

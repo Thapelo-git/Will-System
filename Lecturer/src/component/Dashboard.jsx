@@ -11,7 +11,7 @@ export const Dashboard = () => {
   const [filteredDataSource, setFilteredDataSource] = useState([]);
   const [masterDataSource, setMasterDataSource] = useState([]);
     useEffect(()=>{
-        db.ref("Puser").on("value",(snapshot)=>{
+        db.ref("Student").on("value",(snapshot)=>{
             // setUser({
             //     ...snapshot.val(),
             // })
@@ -50,15 +50,18 @@ const searchFilterFunction =(text)=>{
         <div className='addbutton_cover'>
             <Link to="AddScreen">
             <button className='button_Add'>
-                <h3 className='button_text'>Add New</h3>
+                <h3 className='button_text'>Add New Student</h3>
             </button>
             </Link>
             </div>
-            <div className='search'>
+            <div className='heading'>
+        <h2>All Students</h2>
+      </div>
+            {/* <div className='search'>
                 <div className='search_icon'><i className='fas fa-search'></i></div>
             <input type="text" className='search_input' placeholder='search' icon='search'
             onChange={(e)=>searchFilterFunction(e.target.value)}/>
-            </div>
+            </div> */}
             <div className='users_container'>
               {
               // Object.keys(user).length>0?(

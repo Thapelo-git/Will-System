@@ -71,7 +71,7 @@ function AddScreen() {
     <>
     <div className='Add_cover'>
       <div className='headings'>
-        <h3>Upload Information</h3>
+        <h3>Upload Letter of Work intergrated learnig</h3>
       </div>
       <div className='img_row'>
         
@@ -81,8 +81,8 @@ function AddScreen() {
       <div className='img_row'>
       <input name="url" onChange={handleImgChange} style={{width:'50%'}} type="file" class="form-control"
       placeholder={url} />
-      {/* className="btn-success" */}
-              <button className='button' onClick={handleUpload}>Upload</button>
+      {/* className='button' */}
+              <button className="btn-success" onClick={handleUpload}>Upload</button>
               <progress value={progress} max="1000" />
               </div>
       {/* <div className='img_cover'>

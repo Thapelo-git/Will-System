@@ -12,7 +12,7 @@ import { Display } from '../utils'
 
 
 import { ScrollView } from 'react-native-gesture-handler'
-import AsyncStorageLib from '@react-native-async-storage/async-storage'
+import AsyncStorage from '@react-native-async-storage/async-storage'
 import { db,auth } from '../../firebase'
 
 const deviceHeight=Dimensions.get("window").height
@@ -44,7 +44,7 @@ const CompanySignIn = ({props}) => {
                     .then( async res => {
                         try {
                             const jsonValue = JSON.stringify(res.user)
-                            await AsyncStorageLib.setItem("Company", res.user.uid)
+                            await AsyncStorage.setItem("Company", res.user.uid)
                           
         
                             navigation.navigate('Companyhome')

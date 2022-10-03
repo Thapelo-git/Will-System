@@ -14,6 +14,8 @@ import Visits from './component/Visits';
 import Interveiws from './component/Interveiws';
 import Viewuser from './component/Viewuser';
 import Header from './component/Header';
+import Companies from './component/Companies';
+import ListColumn from './component/ListColumn';
 function App() {
   const [signedin,setSignin]=useState(false)
   auth.onAuthStateChanged((user)=>{
@@ -35,7 +37,7 @@ function App() {
     <Route path='account' element={<Account/>}/>
     <Route  path='dashboard/*' element={<Home/>}/>
     <Route path='visits' element={<Visits/>}/>
-    <Route path='interviews' element={<Interveiws/>}/>
+    <Route path='interviews' element={<ListColumn/>}/>
    
     </Route>
      {/* {!signedin?(

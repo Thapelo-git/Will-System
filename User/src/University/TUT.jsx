@@ -55,7 +55,7 @@ const TUT = ({navigation}) => {
       })
      
 
-      db.ref('/users/' + user).on('value', snap => {
+      db.ref('/Company/' + user).on('value', snap => {
 
         setName(snap.val() && snap.val().name);
         setPhonenumber(snap.val().phonenumber)

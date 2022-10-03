@@ -43,10 +43,10 @@ const Header = () => {
                 {/* <ul className='link f_flex uppercase'> */}
                     <ul className={Mobile ? 'nav-links-mobile' :'link f_flex uppercase'} onClick={()=>setMobile(false)}>
                     <li><Link to="dashboard"><a>Dashboard</a></Link></li>
-                    <li><Link to="visits"><a>Visits</a></Link></li>
+                    <li><Link to="visits"><a>Reports</a></Link></li>
                     <li><Link to="interviews" >
                     <a >
-                   Interviews
+                   Companies
                 </a>
                 </Link></li>
                     <li> <Link to="account" >

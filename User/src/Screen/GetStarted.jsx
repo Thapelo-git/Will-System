@@ -8,7 +8,7 @@ const GetStarted = ({navigation}) => {
     <View>
      <Image style={{height:150,width:150}} source={require('../assets/Images/logo.png')}/>
     </View>
-    <Text style={styles.content}>Will System</Text>
+    <Text style={styles.content}>Wil(Workplace Intergrated Learning) System</Text>
     <TouchableOpacity style={styles.signinButton}
     onPress={()=>navigation.navigate('Signin')}>
                 <Text style={styles.signinButtonText}

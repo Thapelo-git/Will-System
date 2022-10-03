@@ -53,11 +53,11 @@ const SearchScreen = ({ navigation }) => {
                 setMasterDataSource(Tollgate);
 
             })
-        })
-        db.ref('/users/' + user).on('value', snap => {
+        }) 
+        db.ref('/Company/' + user).on('value', snap => {
 
             setName(snap.val() && snap.val().name);
-            setPhonenumber(snap.val().phonenumber)
+            // setPhonenumber(snap.val().phonenumber)
             setEmail(snap.val().email)
         })
 
