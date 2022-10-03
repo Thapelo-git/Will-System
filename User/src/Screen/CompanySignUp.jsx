@@ -10,7 +10,7 @@ import { Display } from '../utils'
 import { Formik } from 'formik'
 import * as yup from 'yup'
 import { auth,db } from '../../firebase'
-
+import { ProgressSteps, ProgressStep } from 'react-native-progress-steps';
 const deviceHeight=Dimensions.get("window").height
 const deviceWidth=Dimensions.get("window").width
 const CompanySignUp = ({navigation}) => {
@@ -59,7 +59,7 @@ const CompanySignUp = ({navigation}) => {
         
       }
   return (
-    <View>
+    
         
       <View style={{width:deviceWidth *0.9,top:10,}}>
       <Formik
@@ -203,7 +203,7 @@ const CompanySignUp = ({navigation}) => {
                 )}
             </Formik>
       </View>
-    </View>
+      
   )
 }
 
