@@ -18,13 +18,16 @@ const SignupSteps = () => {
         name:yup.string().required().min(2),
         phonenumber:yup.string().matches(phoneRegExp,'Phone number is not valid'),
         email:yup.string().required().min(6),
+        location:yup.string().required().min(6),
+        contactPerson:yup.string().required().min(2),
         password:yup.string().required().min(6),
         Duties:yup.string().required().min(10),
         confirmpassword:yup.string().required().min(6).oneOf([yup.ref('password'),null],'password does not match')
     })
     const addUser= async (data)=>{
         try{
-          const {uid,email,password,name,phonenumber,Duties} =data
+          const {uid,email,password,name,phonenumber,Duties,location,
+            contactPerson} =data
   await auth.createUserWithEmailAndPassword(
       email.trim().toLowerCase(),password
     ).then(res =>{
@@ -34,6 +37,8 @@ const SignupSteps = () => {
             email:email.trim().toLowerCase(),
             phonenumber:phonenumber,
             Duties:Duties,
+            location:location,
+            contactPerson:contactPerson,
             uid:res.user.uid
           })
           navigation.navigate('Companyhome')
@@ -60,7 +65,8 @@ const SignupSteps = () => {
       }
   return (
     <Formik
-    initialValues={{name:'',phonenumber:'',email:'',password:'',confirmpassword:'',Duties:''}}
+    initialValues={{name:'',phonenumber:'',email:'',password:'',confirmpassword:'',Duties:'',
+    location:'',contactPerson:''}}
     validationSchema={ReviewSchem}
     onSubmit={(values,action)=>{
         action.resetForm()
@@ -73,9 +79,9 @@ const SignupSteps = () => {
             <View style={styles.container}>
                 
           <ProgressSteps >
-        <ProgressStep label="First Step" >
+        <ProgressStep label="About" >
             <View style={{ alignItems: 'center',padding:20 }}>
-            
+           
             <View style={{ paddingHorizontal:15,
     marginHorizontal:15,}}>
         <Text style={{fontWeight:'bold'}}>Company Name</Text>
@@ -86,7 +92,7 @@ const SignupSteps = () => {
                 color='#000'
                 style={{marginRight:10}}/>
                 
-                <TextInput placeholder="FirstName"
+                <TextInput placeholder="Company Name"
                 selectionColor='gainsboro'
                 style={styles.inputText}
                 onChangeText={props.handleChange('name')}
@@ -95,7 +101,53 @@ const SignupSteps = () => {
                 />
             </View>
         </View>
+        <View style={{height:10}}></View>
         <Text style={{color:'red',marginTop:-10}}>{props.touched.name && props.errors.name}</Text>
+        <View style={{height:10}}></View>
+            <View style={{ paddingHorizontal:15,
+        marginHorizontal:15,}}>
+            <Text style={{fontWeight:'bold'}}>Email Address</Text>
+        </View>
+            <View style={styles.inputContainer}>
+                <View style={styles.inputSubContainer}>
+                    <Feather name="mail" size={22}
+                    color='#000'
+                    style={{marginRight:10}}/>
+                    
+                    <TextInput placeholder="email@gmail.com"
+                    selectionColor='gainsboro'
+                    style={styles.inputText}
+                    keyboardType='email-address'
+             onChangeText={props.handleChange('email')}
+             value={props.values.email}
+             onBlur={props.handleBlur('email')}
+                    />
+                </View>
+            </View>
+            <View style={{height:10}}></View>
+            <Text style={{color:'red',marginTop:-15}}>{props.touched.email && props.errors.email}</Text>
+            <View style={{height:10}}></View>     
+            <View style={{ paddingHorizontal:15,
+    marginHorizontal:15,}}>
+        <Text style={{fontWeight:'bold'}}>Company Location</Text>
+    </View>
+        <View style={styles.inputContainer}>
+            <View style={styles.inputSubContainer}>
+                <Feather name="user" size={22}
+                color='#000'
+                style={{marginRight:10}}/>
+                
+                <TextInput placeholder="Company location"
+                selectionColor='gainsboro'
+                style={styles.inputText}
+                onChangeText={props.handleChange('location')}
+                value={props.values.location}
+                onBlur={props.handleBlur('location')}
+                />
+            </View>
+        </View>
+        <View style={{height:10}}></View>
+        <Text style={{color:'red',marginTop:-10}}>{props.touched.location && props.errors.location}</Text>
             </View>
         </ProgressStep>
         <ProgressStep label="Duties">
@@ -151,16 +203,12 @@ const SignupSteps = () => {
                     <Text style={{color:'red',marginTop:-10}}>{props.touched.Duties && props.errors.Duties}</Text>
             </View>
         </ProgressStep>
-        <ProgressStep label="Third Step">
-            <View style={{ alignItems: 'center' }}>
-                <Text>This is the content within step 3!</Text>
-            </View>
-        </ProgressStep>
-    </ProgressSteps>
-    </View>
-        {/* <View style={{ paddingHorizontal:15,
+        <ProgressStep label="Contact" onSubmit={props.handleSubmit}>
+            <View style={{ alignItems: 'center',padding:20 }}>
+                <Text>Give us Details of person to contact</Text>
+                <View style={{ paddingHorizontal:15,
     marginHorizontal:15,}}>
-        <Text style={{fontWeight:'bold'}}>Company Name</Text>
+        <Text style={{fontWeight:'bold'}}>Contact Person</Text>
     </View>
         <View style={styles.inputContainer}>
             <View style={styles.inputSubContainer}>
@@ -168,122 +216,100 @@ const SignupSteps = () => {
                 color='#000'
                 style={{marginRight:10}}/>
                 
-                <TextInput placeholder="FirstName"
+                <TextInput placeholder="Fullname"
                 selectionColor='gainsboro'
                 style={styles.inputText}
-                onChangeText={props.handleChange('name')}
-                value={props.values.name}
-                onBlur={props.handleBlur('name')}
+                onChangeText={props.handleChange('contactPerson')}
+                value={props.values.contactPerson}
+                onBlur={props.handleBlur('contactPerson')}
                 />
             </View>
         </View>
-        <Text style={{color:'red',marginTop:-10}}>{props.touched.name && props.errors.name}</Text>
-        <View style={{height:7}}></View>
+        <View style={{height:10}}></View>
+        <Text style={{color:'red',marginTop:-10}}>{props.touched.contactPerson && props.errors.contactPerson}</Text>
         <View style={{ paddingHorizontal:15,
     marginHorizontal:15,}}>
-        <Text style={{fontWeight:'bold'}}>Email Address</Text>
+        <Text style={{fontWeight:'bold'}}>Contact PhoneNumber</Text>
     </View>
         <View style={styles.inputContainer}>
             <View style={styles.inputSubContainer}>
-                <Feather name="mail" size={22}
+                <Feather name="user" size={22}
                 color='#000'
                 style={{marginRight:10}}/>
                 
-                <TextInput placeholder="email@gmail.com"
-                selectionColor='gainsboro'
-                style={styles.inputText}
-                keyboardType='email-address'
-         onChangeText={props.handleChange('email')}
-         value={props.values.email}
-         onBlur={props.handleBlur('email')}
-                />
-            </View>
-        </View>
-        <Text style={{color:'red',marginTop:-15}}>{props.touched.email && props.errors.email}</Text>
-        <View style={{height:7}}></View>
-        <View style={{ paddingHorizontal:15,
-    marginHorizontal:15,}}>
-        <Text style={{fontWeight:'bold'}}>Phone Number</Text>
-    </View>
-        <View style={styles.inputContainer}>
-            <View style={styles.inputSubContainer}>
-                <Feather name="phone" size={22}
-                color='#000'
-                style={{marginRight:10}}/>
-                
-                <TextInput placeholder="Phone number"
+                <TextInput placeholder="Phone Number"
                 selectionColor='gainsboro'
                 style={styles.inputText}
                 keyboardType='numeric'
-         onChangeText={props.handleChange('phonenumber')}
-         value={props.values.phonenumber}
-         onBlur={props.handleBlur('phonenumber')}
+                onChangeText={props.handleChange('phonenumber')}
+                value={props.values.phonenumber}
+                onBlur={props.handleBlur('phonenumber')}
                 />
             </View>
         </View>
-        <Text style={{color:'red',marginTop:-15}}>{props.touched.phonenumber && props.errors.phonenumber}</Text>
-    
+        <View style={{height:10}}></View>
+        <Text style={{color:'red',marginTop:-10}}>{props.touched.phonenumber && props.errors.phonenumber}</Text>
         <View style={{height:7}}></View>
-        <View style={{ paddingHorizontal:15,
-    marginHorizontal:15,}}>
-        <Text style={{fontWeight:'bold'}}>Password</Text>
-    </View>
-        <View style={styles.inputContainer}>
-            <View style={styles.inputSubContainer}>
-            <Feather name="lock" size={22}
-                color='#000'
-                style={{marginRight:10}}/>
-             <TextInput
-             secureTextEntry={isPasswordShow? false :true}
-             placeholder="Password"
-             selectionColor='gainsboro'
-             style={styles.inputText}
-             onChangeText={props.handleChange('password')}
-         value={props.values.password}
-         onBlur={props.handleBlur('password')}/>
-             <Feather
-             name="eye" size={22}
-             color='#000'
-             style={{marginRight:10}}
-             onPress={()=>setPasswordShow(!isPasswordShow)}
-             />
-            </View>
+            <View style={{ paddingHorizontal:15,
+        marginHorizontal:15,}}>
+            <Text style={{fontWeight:'bold'}}>Password</Text>
         </View>
-        <Text style={{color:'red',marginTop:-15}}>{props.touched.password && props.errors.password}</Text>
-        <View style={{height:7}}></View>
-        <View style={{ paddingHorizontal:15,
-    marginHorizontal:15,}}>
-        <Text style={{fontWeight:'bold'}}>Confirm Password</Text>
-    </View>
-        <View style={styles.inputContainer}>
-            <View style={styles.inputSubContainer}>
-            <Feather name="lock" size={22}
-                color='#000'
-                style={{marginRight:10}}/>
-             <TextInput
-             secureTextEntry={isPasswordShow? false :true}
-             placeholder=" confirm Password"
-             selectionColor='gainsboro'
-             style={styles.inputText}
-             onChangeText={props.handleChange('confirmpassword')}
-             value={props.values.confirmpassword}
-             onBlur={props.handleBlur('confirmpassword')}/>
-             <Feather
-             name="eye" size={22}
-             color='#000'
-             style={{marginRight:10}}
-             onPress={()=>setPasswordShow(!isPasswordShow)}
-             />
+            <View style={styles.inputContainer}>
+                <View style={styles.inputSubContainer}>
+                <Feather name="lock" size={22}
+                    color='#000'
+                    style={{marginRight:10}}/>
+                 <TextInput
+                 secureTextEntry={isPasswordShow? false :true}
+                 placeholder="Password"
+                 selectionColor='gainsboro'
+                 style={styles.inputText}
+                 onChangeText={props.handleChange('password')}
+             value={props.values.password}
+             onBlur={props.handleBlur('password')}/>
+                 <Feather
+                 name="eye" size={22}
+                 color='#000'
+                 style={{marginRight:10}}
+                 onPress={()=>setPasswordShow(!isPasswordShow)}
+                 />
+                </View>
             </View>
+            <View style={{height:10}}></View>
+            <Text style={{color:'red',marginTop:-15}}>{props.touched.password && props.errors.password}</Text>
+            <View style={{height:7}}></View>
+            <View style={{ paddingHorizontal:15,
+        marginHorizontal:15,}}>
+            <Text style={{fontWeight:'bold'}}>Confirm Password</Text>
         </View>
-        <Text style={{color:'red',marginTop:-15}}>{props.touched.confirmpassword && props.errors.confirmpassword}</Text>
-        <TouchableOpacity style={styles.signinButton}
-       onPress={() => navigation.navigate('SignupSteps')}
-        // onPress={props.handleSubmit}
-        >
-            <Text style={styles.signinButtonText}>Create Account</Text>
-        </TouchableOpacity>
-         */}
+            <View style={styles.inputContainer}>
+                <View style={styles.inputSubContainer}>
+                <Feather name="lock" size={22}
+                    color='#000'
+                    style={{marginRight:10}}/>
+                 <TextInput
+                 secureTextEntry={isPasswordShow? false :true}
+                 placeholder=" confirm Password"
+                 selectionColor='gainsboro'
+                 style={styles.inputText}
+                 onChangeText={props.handleChange('confirmpassword')}
+                 value={props.values.confirmpassword}
+                 onBlur={props.handleBlur('confirmpassword')}/>
+                 <Feather
+                 name="eye" size={22}
+                 color='#000'
+                 style={{marginRight:10}}
+                 onPress={()=>setPasswordShow(!isPasswordShow)}
+                 />
+                </View>
+            </View>
+            <View style={{height:10}}></View>
+            <Text style={{color:'red',marginTop:-15}}>{props.touched.confirmpassword && props.errors.confirmpassword}</Text>
+            </View>
+        </ProgressStep>
+    </ProgressSteps>
+    </View>
+
         </>
             )}
         </Formik>

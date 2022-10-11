@@ -70,9 +70,10 @@ const searchFilterFunction =(text)=>{
 
                  
             <div className='users'>
-            <img src={filteredDataSource[id].url} className="profile_pic"/>
+            {/* <img src={filteredDataSource[id].url} className="profile_pic"/> */}
             <p>{filteredDataSource[id].name} </p>
             <p>{filteredDataSource[id].surname}</p>
+            <p>{filteredDataSource[id].UniversityName}</p>
             <Link to={`viewuser/${id}`}><i className='fas fa-chevron-right'></i></Link>
             
             </div>

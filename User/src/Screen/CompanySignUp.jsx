@@ -61,147 +61,23 @@ const CompanySignUp = ({navigation}) => {
   return (
     
         
-      <View style={{width:deviceWidth *0.9,top:10,}}>
-      <Formik
-        initialValues={{name:'',phonenumber:'',email:'',password:'',confirmpassword:''}}
-        validationSchema={ReviewSchem}
-        onSubmit={(values,action)=>{
-            action.resetForm()
-            addUser(values)
-        }}
-        >
-            {(props)=>(
-                <>
-               
-            <View style={{ paddingHorizontal:15,
+      <View style={{width:deviceWidth *0.9,top:10,justifyContent:'center',alignItems:'center'}}>
+        <View style={{ paddingHorizontal:15,
         marginHorizontal:15,}}>
-            <Text style={{fontWeight:'bold'}}>Company Name</Text>
+            <Text style={{fontWeight:'bold'}}>Create Company Profile</Text>
         </View>
-            <View style={styles.inputContainer}>
-                <View style={styles.inputSubContainer}>
-                    <Feather name="user" size={22}
-                    color='#000'
-                    style={{marginRight:10}}/>
-                    
-                    <TextInput placeholder="FirstName"
-                    selectionColor='gainsboro'
-                    style={styles.inputText}
-                    onChangeText={props.handleChange('name')}
-                    value={props.values.name}
-                    onBlur={props.handleBlur('name')}
-                    />
-                </View>
-            </View>
-            <Text style={{color:'red',marginTop:-10}}>{props.touched.name && props.errors.name}</Text>
-            <View style={{height:7}}></View>
-            <View style={{ paddingHorizontal:15,
+        <View style={{ paddingHorizontal:15,
         marginHorizontal:15,}}>
-            <Text style={{fontWeight:'bold'}}>Email Address</Text>
+            <Text style={{fontWeight:'bold',color:'gray'}}>This information will let us know more 
+            about your company</Text>
         </View>
-            <View style={styles.inputContainer}>
-                <View style={styles.inputSubContainer}>
-                    <Feather name="mail" size={22}
-                    color='#000'
-                    style={{marginRight:10}}/>
-                    
-                    <TextInput placeholder="email@gmail.com"
-                    selectionColor='gainsboro'
-                    style={styles.inputText}
-                    keyboardType='email-address'
-             onChangeText={props.handleChange('email')}
-             value={props.values.email}
-             onBlur={props.handleBlur('email')}
-                    />
-                </View>
-            </View>
-            <Text style={{color:'red',marginTop:-15}}>{props.touched.email && props.errors.email}</Text>
-            <View style={{height:7}}></View>
-            <View style={{ paddingHorizontal:15,
-        marginHorizontal:15,}}>
-            <Text style={{fontWeight:'bold'}}>Phone Number</Text>
-        </View>
-            <View style={styles.inputContainer}>
-                <View style={styles.inputSubContainer}>
-                    <Feather name="phone" size={22}
-                    color='#000'
-                    style={{marginRight:10}}/>
-                    
-                    <TextInput placeholder="Phone number"
-                    selectionColor='gainsboro'
-                    style={styles.inputText}
-                    keyboardType='numeric'
-             onChangeText={props.handleChange('phonenumber')}
-             value={props.values.phonenumber}
-             onBlur={props.handleBlur('phonenumber')}
-                    />
-                </View>
-            </View>
-            <Text style={{color:'red',marginTop:-15}}>{props.touched.phonenumber && props.errors.phonenumber}</Text>
-        
-            <View style={{height:7}}></View>
-            <View style={{ paddingHorizontal:15,
-        marginHorizontal:15,}}>
-            <Text style={{fontWeight:'bold'}}>Password</Text>
-        </View>
-            <View style={styles.inputContainer}>
-                <View style={styles.inputSubContainer}>
-                <Feather name="lock" size={22}
-                    color='#000'
-                    style={{marginRight:10}}/>
-                 <TextInput
-                 secureTextEntry={isPasswordShow? false :true}
-                 placeholder="Password"
-                 selectionColor='gainsboro'
-                 style={styles.inputText}
-                 onChangeText={props.handleChange('password')}
-             value={props.values.password}
-             onBlur={props.handleBlur('password')}/>
-                 <Feather
-                 name="eye" size={22}
-                 color='#000'
-                 style={{marginRight:10}}
-                 onPress={()=>setPasswordShow(!isPasswordShow)}
-                 />
-                </View>
-            </View>
-            <Text style={{color:'red',marginTop:-15}}>{props.touched.password && props.errors.password}</Text>
-            <View style={{height:7}}></View>
-            <View style={{ paddingHorizontal:15,
-        marginHorizontal:15,}}>
-            <Text style={{fontWeight:'bold'}}>Confirm Password</Text>
-        </View>
-            <View style={styles.inputContainer}>
-                <View style={styles.inputSubContainer}>
-                <Feather name="lock" size={22}
-                    color='#000'
-                    style={{marginRight:10}}/>
-                 <TextInput
-                 secureTextEntry={isPasswordShow? false :true}
-                 placeholder=" confirm Password"
-                 selectionColor='gainsboro'
-                 style={styles.inputText}
-                 onChangeText={props.handleChange('confirmpassword')}
-                 value={props.values.confirmpassword}
-                 onBlur={props.handleBlur('confirmpassword')}/>
-                 <Feather
-                 name="eye" size={22}
-                 color='#000'
-                 style={{marginRight:10}}
-                 onPress={()=>setPasswordShow(!isPasswordShow)}
-                 />
-                </View>
-            </View>
-            <Text style={{color:'red',marginTop:-15}}>{props.touched.confirmpassword && props.errors.confirmpassword}</Text>
-            <TouchableOpacity style={styles.signinButton}
+         <TouchableOpacity style={styles.signinButton}
            onPress={() => navigation.navigate('SignupSteps')}
-            // onPress={props.handleSubmit}
+            
             >
                 <Text style={styles.signinButtonText}>Create Account</Text>
             </TouchableOpacity>
-            
-            </>
-                )}
-            </Formik>
+     
       </View>
       
   )

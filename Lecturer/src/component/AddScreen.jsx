@@ -7,7 +7,7 @@ function AddScreen() {
   let navigate =useNavigate()
   const values={
     name:'',surname:'',IDnumber:'',
-    UniversityName:'',
+    UniversityName:'',completed:'',
     monthNum:'',faculty:''
   
   }
@@ -47,7 +47,7 @@ function AddScreen() {
   };
   const [initialState,setState]=useState(values)
   const {name,surname,IDnumber,
-    UniversityName,
+    UniversityName,completed,
     monthNum,faculty
 
 }=initialState
@@ -63,8 +63,8 @@ function AddScreen() {
     e.preventDefault();
      
         db.ref('Student').push({name,surname,IDnumber,
-          UniversityName,
-          monthNum,faculty,url})
+          UniversityName,completed,
+          monthNum,faculty,})
        navigate('dashboard/*')
 }
   return (
@@ -73,21 +73,19 @@ function AddScreen() {
       <div className='headings'>
         <h3>Upload Letter of Work intergrated learnig</h3>
       </div>
-      <div className='img_row'>
+      {/* <div className='img_row'>
         
       <img src={url || "https://media.istockphoto.com/vectors/welcome-hotel-services-on-vector-illustration-vector-id1172931964?k=20&m=1172931964&s=612x612&w=0&h=n8tpGi16ZTNU1quhN-GjONLcgVe6xgzJ2-QaD4_MVU4="} 
       alt="firebase-image" className='image1'/>
-      </div>
-      <div className='img_row'>
+      </div> */}
+      {/* <div className='img_row'>
       <input name="url" onChange={handleImgChange} style={{width:'50%'}} type="file" class="form-control"
       placeholder={url} />
-      {/* className='button' */}
-              <button className="btn-success" onClick={handleUpload}>Upload</button>
+     
+              <button className="button" onClick={handleUpload}>Upload</button>
               <progress value={progress} max="1000" />
-              </div>
-      {/* <div className='img_cover'>
-   
-      </div> */}
+              </div> */}
+    
       <div className='form_cover'>
       <form onSubmit={handleSubmit}>
         <div className='input_row'>
@@ -103,18 +101,28 @@ function AddScreen() {
             onChange={handleInputChange} value={surname} />
          
           </div>
-          {/* <div className='input_column'>
-            <label>age</label>
-            <input name='age' type='number' className='input_infor' required="required"
-            onChange={handleInputChange} value={age}/>
-          </div> */}
+         
           <div className='input_column'>
             <label>Student  Number</label>
             <input name='IDnumber' type='text' className='input_infor' required="required" 
             onChange={handleInputChange} value={IDnumber}/>
           </div>
         </div>
-      
+        <div className='input_row'>
+    
+          <div className='input_column'>
+          <label>Student completed all modules ?</label> 
+            <select class="custom-select" id="gender3" name='completed'
+          value={completed} onChange={handleInputChange} >
+            <option selected>Choose...</option>
+            <option  name="No" >No</option>
+            <option name="Yes" >Yes</option>
+           
+          </select>
+          
+          </div>
+
+        </div>
         <div className='headings'>
         <h3>Other Information</h3>
       </div>

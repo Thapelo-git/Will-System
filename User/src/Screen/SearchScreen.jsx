@@ -25,32 +25,28 @@ const SearchScreen = ({ navigation }) => {
     const [phonenumber, setPhonenumber] = useState('')
     const [location, setLocation] = useState(false)
     
-    const [Tollgate, setTollgate] = useState([])
+    const [Student, setStudent] = useState([])
     const [isLoading, setLoading] = useState(false);
    
     const user = auth.currentUser.uid;
     useEffect(() => {
-        db.ref('/Tollgate').on('value', snap => {
+        db.ref('/Student').on('value', snap => {
 
-            const Tollgate = []
+            const Student = []
             snap.forEach(action => {
                 const key = action.key
                 const data = action.val()
-                Tollgate.push({
+                Student.push({
                     key: key,
-                    location: data.location,
+                    IDnumber:data.IDnumber,
                     name: data.name,
-                    url: data.url,
-                    Route: data.Route,
-                    Road: data.Road,
-                    Class1: data.Class1,
-                    Class2: data.Class2,
-                    Class3: data.Class3,
-                    Class4: data.Class4,
+                    surname:data.surname,UniversityName:data.UniversityName,
+                    completed:data.completed,faculty:data.faculty,
+                    monthNum:data.monthNum
                 })
-                setTollgate(Tollgate)
-                setFilteredDataSource(Tollgate);
-                setMasterDataSource(Tollgate);
+                setStudent(Student)
+                setFilteredDataSource(Student);
+                setMasterDataSource(Student);
 
             })
         }) 
@@ -112,6 +108,11 @@ const SearchScreen = ({ navigation }) => {
                 backgroundColor="#EC8F05"
                 barStyle="light-content"
             />
+            <View style={styles.headerContainer} 
+                >
+                
+                <Text style={styles.headerTitle}>{name}</Text>
+                </View>
             <View style={styles.header}>
                 <View style={{ flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
                     <TouchableOpacity onPress={() => navigation.navigate('EditProfile', {
@@ -204,6 +205,20 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
 
     },
+    headerContainer:{
+        flexDirection:'row' ,
+        alignItems:'center',
+        justifyContent:'center',
+        paddingVertical:20,
+        paddingHorizontal:20
+     },
+     headerTitle:{
+       fontSize:20,
+       lineHeight:20 * 1.4,
+       width:80,
+       textAlign:'center'  
+ 
+     },
     card: {
         height: 220,
     },

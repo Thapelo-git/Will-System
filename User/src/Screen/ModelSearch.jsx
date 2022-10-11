@@ -33,7 +33,7 @@ const ModelSearch = ({navigation,bottomopen}) => {
                    key:key,
                    name: data.name,surname: data.surname,age: data.age,IDnumber: data.IDnumber,
                    UniversityName:data.UniversityName,
-                   monthNum:data.monthNum,faculty,
+                   monthNum:data.monthNum,faculty:data.faculty,
   
                    url: data.url,
                })
