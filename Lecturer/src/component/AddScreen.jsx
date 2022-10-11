@@ -59,13 +59,16 @@ function AddScreen() {
       [name]:value,
     })
   }
+  const [Status,setStatus]=useState('Pending')
+  const [S,setS]=useState()
   const handleSubmit = (e)=>{
     e.preventDefault();
      
         db.ref('Student').push({name,surname,IDnumber,
           UniversityName,completed,
-          monthNum,faculty,})
-       navigate('dashboard/*')
+          monthNum,faculty,Status})
+      //  navigate('dashboard/*')
+      setS('Succesfully Added')
 }
   return (
     <>
@@ -167,33 +170,10 @@ function AddScreen() {
         </div>
        
 
-      {/* <div className='headings'>
-        <h3>Lawyer Information</h3>
-      </div>
-      <div className='input_row'>
-          <div className='input_column'>
-            <label>Name</label>
-            <input name='lawyername' type='text' className='input_infor' required="required"
-            onChange={handleInputChange} value={lawyername}/>
-          </div>
-          <div className='input_column'>
-            <label>Surname</label>
-            <input name='lawyersurname' type='text' className='input_infor' required="required" 
-            onChange={handleInputChange} value={lawyersurname}/>
-          </div>
-          <div className='input_column'>
-            <label>Phone Number</label>
-            <input name='lawyerphonenumber' type='number' className='input_infor' required="required"
-            onChange={handleInputChange} value={lawyerphonenumber}/>
-          </div>
-          <div className='input_column'>
-            <label>Email</label>
-            <input name='lawyeremail' type='text' className='input_infor' required="required"
-            onChange={handleInputChange} value={lawyeremail}/>
-          </div>
-        </div> */}
+
         <div className='headings'>
           <button type='submit' className='button'><label className='button_Lable'>Submit</label></button>
+          <p>{S}</p>
         </div>
       </form>
       </div>

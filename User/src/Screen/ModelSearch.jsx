@@ -11,7 +11,7 @@ const deviceHeight=Dimensions.get("window").height
 const { width } = Dimensions.get("screen")
 const cardWidth = width / 1.8
 import { db,auth } from '../../firebase'
-
+import { Divider } from 'react-native-elements'
 const ModelSearch = ({navigation,bottomopen}) => {
   const user = auth.currentUser.uid;
   const [name, setName] = useState('')
@@ -20,28 +20,38 @@ const ModelSearch = ({navigation,bottomopen}) => {
     const [searchtext,setSearchtext] = useState('');
     const [filteredDataSource, setFilteredDataSource] = useState([]);
   const [masterDataSource, setMasterDataSource] = useState([]);
-  const [Pusers, setPusers] = useState([])
+  const [Student, setStudent] = useState([])
 
   useEffect(() => {
     db.ref('/Student').on('value',snap=>{
           
-        const Pusers=[]
+        const Student=[]
            snap.forEach(action=>{
                const key=action.key
                const data =action.val()
-               Pusers.push({
+               Student.push({
                    key:key,
-                   name: data.name,surname: data.surname,age: data.age,IDnumber: data.IDnumber,
+                   name: data.name,surname: data.surname,IDnumber: data.IDnumber,
                    UniversityName:data.UniversityName,
-                   monthNum:data.monthNum,faculty:data.faculty,
+                   monthNum:data.monthNum,faculty:data.faculty,Status:data.Status,
   
-                   url: data.url,
+                   
                })
     
            })
-           setPusers(Pusers)
-        setFilteredDataSource(Pusers);
-       setMasterDataSource(Pusers);
+           const text='Pending'
+                if(text){
+                 const newData = Student.filter(function(item){
+                     const itemData = item.Status ? item.Status
+                     :'';
+                     const textData = text;
+                     return itemData.indexOf( textData)>-1;
+     
+                 })
+                 setStudent(newData)
+                 setFilteredDataSource(newData);
+                 setMasterDataSource(newData);
+               }
        })
      
 
@@ -71,32 +81,95 @@ const ModelSearch = ({navigation,bottomopen}) => {
       }
   }
 
-    const Card = ({ Tollgate, index }) => {
+    const Card = ({element, index }) => {
       return (
-          <TouchableOpacity onPress={() => navigation.navigate('HotelDetails', {
-              data: Tollgate, index: index,
-              phonenumber: phonenumber
-          })}>
-              <View style={styles.cardContainer}>
-                  <Image style={styles.cardImage} source={{ uri: Tollgate.url }} />
-                  <View style={{ height: 100, alignItems: 'center' }}>
-                      <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }}>
-                          <Text style={{ fontSize: 18, color: 'gray', }}>Name: </Text>
-                          <Text style={{ fontSize: 20, color: 'blue', }}>{Tollgate.name}</Text>
-                      </View>
-                      <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }}>
-                          <Text style={{ fontSize: 18, color: 'gray', }}>faculty: </Text>
-                          <Text style={{ fontSize: 20, color: 'gray', }}>{Tollgate.faculty}</Text>
-                      </View>
-                      <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }}>
-                          <Text style={{ fontSize: 18, color: 'gray', }}>University Name: </Text>
-                          <Text style={{ fontSize: 18, color: 'gray', }}>{Tollgate.UniversityName}</Text>
-                      </View>
+        <>
+        <View style={{ margin: 20,backgroundColor: '#fff',elevation: 3 }}>
+        <View style={{width:'100%'}}>
+                   <View style={{ backgroundColor: 'gray', justifyContent: 'flex-start', flexDirection: 'row', padding: 8, alignItems:'center', borderBottomRightRadius:10}}>
+                    
+                     <Text style={{color: '#fff'}}>
+                       Student Number:
+                     </Text>
+                     <Text style={{color: '#fff'}}>
+                       {" "}{element.IDnumber}
+                     </Text>
+                   </View>
+                 </View>
 
-                  </View>
+                 <Divider style={{width: 90, justifyContent:'flex-end', alignItems:'flex-end', alignSelf:'flex-end'}}/>
 
-              </View>
-          </TouchableOpacity>)
+                 {/* event type */}
+                 <View style={{flexDirection:'row',}}>
+                 <View style={{ backgroundColor: '#fff', justifyContent: 'flex-end', flexDirection: 'row', padding: 8, alignItems:'center'}}>
+                   <Ionicons name="documents" color='#333' size={20} />
+                   <Text style={{paddingHorizontal: 5,color:'#333'}}>
+                    faculty of : {element.faculty} 
+                   </Text>
+                 </View>
+                 <View style={{ backgroundColor: '#fff', justifyContent:'flex-start', flexDirection: 'row', padding: 8, alignItems:'center'}}>
+                 
+                   <Text style={{paddingHorizontal: 5,color:'#333'}}>
+                    Duration : {element.monthNum}  month
+                   </Text>
+                 </View>
+                 </View>
+                 <Divider style={{width: 120, justifyContent:'flex-end', alignItems:'flex-end', alignSelf:'flex-end'}}/>
+
+                 {/* date */}
+                 <View style={{ backgroundColor: '#fff', justifyContent: 'flex-end', flexDirection: 'row', padding: 8, alignItems:'center' }}>
+                   {/* <Feather
+                     name="calendar" size={20}
+                     style={{ paddingHorizontal: 5 }}
+                     color='blue'
+                   /> */}
+                   <Text>University Name:</Text>
+                   <Text style={{color:'blue', fontSize:12}}>
+                     {element.UniversityName} 
+                   </Text>
+                 </View>
+
+                 <Divider style={{width: 170, justifyContent:'flex-end', alignItems:'flex-end', alignSelf:'flex-end'}}/>
+
+               {/* location */}
+               <View style={{flexDirection:'row'}}>
+               <View style={{ backgroundColor: '#fff', justifyContent: 'flex-end', flexDirection: 'row', padding: 8 , alignItems:'center'}}>
+                 <View>
+                 <Text>Name: </Text>
+                 <Text style={{color:'#333'}}>
+                   {element.name}
+                 </Text>
+                 </View>
+                 <View>
+                 <Text>Surname: </Text>
+                 <Text style={{color:'#333'}}>
+                   {element.surname}
+                 </Text>
+                 </View>
+               </View>
+               <View style={{ backgroundColor: '#fff', justifyContent:'flex-start', flexDirection: 'row', padding: 8 , alignItems:'center'}}>
+                 <View>
+                 <Text>modules Completed: </Text>
+                 <Text style={{color:'#333'}}>
+                   {element.completed}
+                 </Text>
+                 </View>
+                 
+               </View>
+               </View>
+               <Divider style={{width: 200, justifyContent:'flex-end', alignItems:'flex-end', alignSelf:'flex-end'}}/>
+
+               {/* description */}
+               <View style={{ justifyContent: 'center',  padding: 8,marginHorizontal:10 }}>
+               <TouchableOpacity style={styles.signinButton}
+           >
+             <Text style={styles.signinButtonText}
+             
+             >Accept</Text>
+         </TouchableOpacity>
+               </View>
+               </View>
+        </>)
   }
     return (
         <SafeAreaView >
@@ -137,7 +210,7 @@ const ModelSearch = ({navigation,bottomopen}) => {
                 showsVerticalScrollIndicator={false}
                 contentContainerStyle={{ paddingLeft: 20 }}
                 data={filteredDataSource}
-                renderItem={({ item, index }) => <Card Tollgate={item} index={index} />}
+                renderItem={({ item, index }) => <Card element={item} index={index} />}
             />
      
         
@@ -179,6 +252,21 @@ const styles = StyleSheet.create({
         // padding:20,
         // height:'100%',
         // marginTop:20,
+    },
+    signinButton:{
+        backgroundColor:'#4bb543',
+        borderRadius:8,
+        marginHorizontal:20,
+        height:30,
+        justifyContent:'center',
+        alignItems:'center',
+        marginTop:20,
+    },
+    signinButtonText:{
+        fontSize:18,
+        lineHeight:18 * 1.4,
+        color:'#fff',
+        
     },
     card: {
       height: 220,
