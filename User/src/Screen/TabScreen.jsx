@@ -5,7 +5,8 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs'
 import SearchScreen from './SearchScreen'
 import PolProfile from './PolProfile';
-
+import Ionicons from 'react-native-vector-icons/Ionicons'
+import Logbook from './Logbook';
 // import PolLocation from './PolLocation'
 const Tab = createMaterialBottomTabNavigator()
 const TabScreen = () => {
@@ -29,17 +30,18 @@ const TabScreen = () => {
         ),
       }}
     />
-{/*    
+   
     <Tab.Screen
-      name="PolLocation"
-      component={PolLocation}
+      name="Logbook"
+      component={Logbook}
       options={{
-        tabBarLabel: 'Location',
+        tabBarLabel: 'Logbook',
         tabBarIcon: ({ color }) => (
-        <Icon name="location-sharp" color={color} size={24} />
+          <Ionicons name="documents" color={color} size={24} />
+        
         ),
       }}
-    /> */}
+    />
     <Tab.Screen
       name="PolProfile"
       component={PolProfile}

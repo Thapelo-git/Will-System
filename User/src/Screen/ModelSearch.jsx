@@ -80,6 +80,22 @@ const ModelSearch = ({navigation,bottomopen}) => {
           setSearchtext(text)
       }
   }
+  const updateAccept = (key,status,IDnumber,faculty,monthNum,UniversityName,name,surname) => {
+    db.ref('Student').child(key).update({Status:status})
+    .then(()=>db.ref('Student').once('value'))
+    .then(snapshot=>snapshot.val())
+    .catch(error => ({
+      errorCode: error.code,
+      errorMessage: error.message
+    }))
+    db.ref('AcceptedStudents').push({
+        Status:'Accepted',
+       IDnumber,faculty,monthNum,UniversityName,
+       surname,name,user,ComName,email,phonenumber,
+        Duties,location
+      })
+
+}
 
     const Card = ({element, index }) => {
       return (
@@ -162,11 +178,13 @@ const ModelSearch = ({navigation,bottomopen}) => {
                {/* description */}
                <View style={{ justifyContent: 'center',  padding: 8,marginHorizontal:10 }}>
                <TouchableOpacity style={styles.signinButton}
-           >
-             <Text style={styles.signinButtonText}
-             
-             >Accept</Text>
-         </TouchableOpacity>
+              onPress={()=>updateAccept(element.key,'Accepted',element.IDnumber,
+              element.faculty,element.monthNum,element.UniversityName,element.name,
+              element.surname)} >
+                <Text style={styles.signinButtonText}
+                
+                >Accept</Text>
+            </TouchableOpacity>
                </View>
                </View>
         </>)

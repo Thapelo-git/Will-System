@@ -96,14 +96,14 @@ const SearchScreen = ({ navigation }) => {
         }
     }
  
-    const updateAccept = ({key,status,IDnumber,faculty,monthNum,UniversityName,name,surname}) => {
+    const updateAccept = (key,status,IDnumber,faculty,monthNum,UniversityName,name,surname) => {
         db.ref('Student').child(key).update({Status:status})
         .then(()=>db.ref('Student').once('value'))
         .then(snapshot=>snapshot.val())
         .catch(error => ({
           errorCode: error.code,
           errorMessage: error.message
-        })),
+        }))
         db.ref('AcceptedStudents').push({
             Status:'Accepted',
            IDnumber,faculty,monthNum,UniversityName,
@@ -250,7 +250,7 @@ const SearchScreen = ({ navigation }) => {
             <View style={styles.headerContainer}
             >
 
-                <Text style={styles.headerTitle}>{ComName}</Text>
+                <Text style={styles.headerTitle}>{ComName} company</Text>
             </View>
             <View style={styles.header}>
                 <View style={{ flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
@@ -267,7 +267,7 @@ const SearchScreen = ({ navigation }) => {
                     <Text style={{
                         fontSize: 18, marginLeft: 10,
                         marginTop: 18
-                    }}>{ComName}</Text>
+                    }}>{email}</Text>
                 </View>
                 {/* <TouchableOpacity onPress={navigation.navigate('Notification')}>
           <Ionicons name="notifications" size={24}/>
@@ -385,8 +385,7 @@ const styles = StyleSheet.create({
     },
     headerTitle: {
         fontSize: 20,
-        lineHeight: 20 * 1.4,
-        width: 80,
+        lineHeight: 20 * 1.4,  
         textAlign: 'center'
 
     },
