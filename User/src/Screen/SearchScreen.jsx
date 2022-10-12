@@ -11,7 +11,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons'
 //https://dribbble.com/shots/18568156-ECHO-PARK-Parking-Space-Finder-App
 //https://github.com/react-native-voice/voice/blob/master/example/src/VoiceTest.tsx
 //https://dribbble.com/shots/15942307-Fashion-Store-Mobile-Version
-import Voice from '@react-native-community/voice';
+
 import { Divider } from 'react-native-elements'
 import Icon from "react-native-vector-icons/MaterialIcons"
 import { auth, db } from '../../firebase.jsx'
@@ -409,14 +409,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row', justifyContent: 'center',
         width: '100%',
         height: 110,
-        // width:cardWidth*1.5,
-        // marginRight:20,
-
-        // marginHorizontal:10,
-
-        // borderRadius:15,
-        // elevation:15,
-        // backgroundColor:COLORS.white,
+        
         alignItems: 'center',
     },
 
