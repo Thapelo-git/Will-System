@@ -11,6 +11,7 @@ import SigninScreen from './src/Screen/SigninScreen';
 import TabScreen from './src/Screen/TabScreen';
 import SearchScreen from './src/Screen/SearchScreen';
 import SignupSteps from './src/Screen/SignupSteps';
+import ForgetPassword from './src/Screen/ForgetPassword';
 const Stack = createNativeStackNavigator()
 export default function App() {
   const [signedIn,setSignedIn]=useState(false)
@@ -35,8 +36,8 @@ export default function App() {
               <Stack.Screen name="Signup" component={SignupScreen}/> 
               <Stack.Screen name="Signin" component={SigninScreen}/> 
               <Stack.Screen name="SignupSteps" component={SignupSteps}/>
-              {/* <Stack.Screen name="forgetPassword" component={forgetPassword}/>
-              <Stack.Screen name="RegisterPhone" component={RegisterPhone}/>  */}
+              <Stack.Screen name="forgetPassword" component={ForgetPassword}/>
+  
               </Stack.Navigator>
               </>
           ):(

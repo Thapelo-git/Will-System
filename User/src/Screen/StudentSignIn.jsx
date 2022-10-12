@@ -3,13 +3,10 @@ import { StyleSheet, Text, View ,StatusBar,Alert,
     TextInput,TouchableOpacity,Image,Modal,Dimensions,SafeAreaView,ScrollView} from 'react-native'
 import Icon from "react-native-vector-icons/Ionicons"
 import Feather from "react-native-vector-icons/Feather"
-
-
 import { Images,Colors  } from '../contants'
-
 import { Formik } from 'formik'
 import * as yup from 'yup'
-import Display from '../utils'
+
 
 import { useNavigation } from '@react-navigation/native'
 import { auth } from '../../firebase'
@@ -143,9 +140,9 @@ const StudentSignIn = () => {
                 <View>
                     <Text style={styles.rememberMeText}></Text>
                 </View>
-                {/* <Text style={styles.forgotPasswordText}
+                <Text style={styles.forgotPasswordText}
                 onPress={()=>navigation.navigate('forgetPassword')}
-                >Forget Password</Text> */}
+                >Forget Password</Text>
             </View>
     
             <TouchableOpacity style={styles.signinButton}
