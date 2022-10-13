@@ -12,6 +12,7 @@ import TabScreen from './src/Screen/TabScreen';
 import SearchScreen from './src/Screen/SearchScreen';
 import SignupSteps from './src/Screen/SignupSteps';
 import ForgetPassword from './src/Screen/ForgetPassword';
+import LogScreen from './src/Screen/LogScreen';
 const Stack = createNativeStackNavigator()
 export default function App() {
   const [signedIn,setSignedIn]=useState(false)
@@ -49,7 +50,7 @@ export default function App() {
           <Stack.Screen name="UserDetails" component={UserDetails}/> */}
           <Stack.Screen name="Companyhome" component={TabScreen}/>
            <Stack.Screen name="Search" component={SearchScreen}/>
-           
+           <Stack.Screen name="LogScreen" component={LogScreen}/>
           {/*<Stack.Screen name="PolLocation" component={PolLocation}/>
           <Stack.Screen name="PolProfile" component={PolProfile}/>
           <Stack.Screen name="PolUserDetails" component={PolUserDetails}/>

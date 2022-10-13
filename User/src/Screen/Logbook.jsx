@@ -10,7 +10,7 @@ import { ScrollView } from 'react-native'
 import Ionicons from 'react-native-vector-icons/Ionicons'
 import { auth, db } from '../../firebase.jsx'
 import { Divider } from 'react-native-elements'
-const Logbook = () => {
+const Logbook = ({navigation}) => {
     const [filteredDataSource, setFilteredDataSource] = useState();
     const [masterDataSource, setMasterDataSource] = useState([]);
     const [Student, setStudent] = useState([])
@@ -129,7 +129,7 @@ const Logbook = () => {
                   {/* description */}
                   <View style={{ justifyContent: 'center',  padding: 8,marginHorizontal:10 }}>
                   <TouchableOpacity style={styles.signinButton}
-               >
+               onPress={()=>navigation.navigate('LogScreen',{name:element.name,StudentNum:element.IDnumber})}>
                 <Text style={styles.signinButtonText}>Start Logbook</Text>
             </TouchableOpacity>
                   </View>
