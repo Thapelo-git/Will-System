@@ -33,6 +33,15 @@ function WelcomScreen() {
                 >
                   <p style={{color: page === 1 ?'#000':'#fff'}}>Login</p>
                 </div>
+                <div style={{borderRadius: '20px',
+                backgroundColor: page === 2 ?'#fff':'#000',
+                  display:'flex',justifyContent:'center',alignItems:'center',
+                  width:'120px',height:'44px',cursor:'pointer',
+                }}
+                onClick={()=>setPage(2)}
+                >
+                  <p style={{color: page === 2 ?'#000':'#fff'}}>ForgetPassword</p>
+                </div>
             </div>
             
             <div className='form_container'>
@@ -50,7 +59,8 @@ function WelcomScreen() {
            
             </div>
             <div className='heading'>
-              <p  onClick={()=>setPage(2)} className='forgetPassword'>ForgetPassword</p></div>
+              {/* <p  onClick={()=>setPage(2)} className='forgetPassword'>ForgetPassword</p> */}
+              </div>
         </div>
         
     </div>

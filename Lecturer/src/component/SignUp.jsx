@@ -41,14 +41,14 @@ function SignUp() {
                     uid: res.user.uid
                 }
                   console.log(user)
-                db.ref('/AdminPuser')
+                db.ref('/Lecturer')
                 .child(res.user.uid)
                 .set(user)
                 .then((result) => {
                     console.log(result, "<<<<<<<<<<<<<<<<<<<<<<<<")
                     try {
             
-                        localStorage.setItem("AdminPuser", res.user.uid)
+                        localStorage.setItem("Lecturer", res.user.uid)
                     } catch (e) {
                       // saving error
                       console.log('no data')
@@ -89,7 +89,7 @@ function SignUp() {
          {/* onSubmit={handleSubmit} */}
       <Form >
         <div className='header'>
-          <h3>SignUp</h3>
+          {/* <h3>SignUp</h3> */}
           {error && <Alert variant='danger'>{error}</Alert>}
         </div>
         <div className='form_innerCon'>

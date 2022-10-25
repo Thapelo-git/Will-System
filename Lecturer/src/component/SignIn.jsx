@@ -20,7 +20,7 @@ function SignIn() {
       .then( res=>{
         try {
             
-              localStorage.setItem("AdminPuser", res.user.uid)
+              localStorage.setItem("Lecturer", res.user.uid)
           } catch (e) {
             // saving error
             console.log('no data')
@@ -37,9 +37,9 @@ function SignIn() {
   return (
     <div>
       <form>
-        <div className='header'>
+        {/* <div className='header'>
           <h3>SignIn</h3>
-        </div>
+        </div> */}
         <div className='form_innerCon'>
       <table>
         <tr><p className='error'>{error}</p></tr>
