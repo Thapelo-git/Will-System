@@ -18,14 +18,14 @@ import Companies from './component/Companies';
 import ListColumn from './component/ListColumn';
 function App() {
   const [signedin,setSignin]=useState(false)
-  auth.onAuthStateChanged((user)=>{
-    if(user){
-      setSignin(true)
-      console.log('login///////////////////////////')
-    }else{
-      setSignin(false)
-    }
-  })
+  // auth.onAuthStateChanged((user)=>{
+  //   if(user){
+  //     setSignin(true)
+  //     console.log('login///////////////////////////')
+  //   }else{
+  //     setSignin(false)
+  //   }
+  // })
   return (
     <AuthProvider>
   <BrowserRouter>

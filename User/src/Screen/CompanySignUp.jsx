@@ -37,7 +37,7 @@ const CompanySignUp = ({navigation}) => {
             uid:res.user.uid
           })
           navigation.navigate('Companyhome')
-          res.user.sendEmailVerification()
+          // res.user.sendEmailVerification()
           })
         }
         catch(error){

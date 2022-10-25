@@ -14,10 +14,15 @@ import { auth } from '../../firebase'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 const deviceHeight=Dimensions.get("window").height
 const deviceWidth=Dimensions.get("window").width
-const StudentSignIn = () => {
-    const navigation =useNavigation()
+const StudentSignIn = ({navigation}) => {
+    // const navigation =useNavigation()
     // const [persalnumber,setPersalnumber]=useState()
     const [isPasswordShow,setPasswordShow]=useState(false)
+    const ReviewSchem=yup.object({
+       
+        email:yup.string().email().required().min(6),
+        password:yup.string().required().min(6),
+    })
     
     const signIn = async(data)=>{
         const { email, password } = data;
@@ -26,12 +31,12 @@ const StudentSignIn = () => {
                     const user = await auth
                     .signInWithEmailAndPassword(email.trim().toLowerCase(), password)
                     .then( async res => {
-                        try {
+                        try { 
                             const jsonValue = JSON.stringify(res.user)
-                            await AsyncStorage.setItem("Student", res.user.uid)
+                            await AsyncStorage.setItem("IDCStudent", res.user.uid)
                           
-        
-                            // navigation.navigate('Polhome')
+                            // navigation.navigate('Companyhome')
+                            navigation.navigate('StudentHome')
                         } catch (e) {
                             console.log("no data ");
                         }
@@ -47,11 +52,7 @@ const StudentSignIn = () => {
         }
     }
 
-    const ReviewSchem=yup.object({
-       
-        email:yup.string().email().required().min(6),
-        password:yup.string().required().min(6),
-    })
+   
   return (
     <SafeAreaView>
             
@@ -61,7 +62,7 @@ const StudentSignIn = () => {
             <View style={{width:deviceWidth *0.9,top:20}}>
               <ScrollView>
                   <Formik
-                  initialValues={{idnumber:'',email:'',}}
+                  initialValues={{password:'',email:'',}}
                  validationSchema={ReviewSchem}
                  onSubmit={(values,action)=>{
                      action.resetForm()

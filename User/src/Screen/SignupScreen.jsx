@@ -35,11 +35,11 @@ const SignupScreen = ({navigation}) => {
             onPress={()=>setPage(0)}>
                   <Text style={{color:page===0?'#fff':'#000',fontWeight:'bold'}}>Company</Text>
               </TouchableOpacity>
-              <TouchableOpacity style={{width:130,height:58,backgroundColor:page === 1?'#EC8F05':'gainsboro',justifyContent:'center',
+              {/* <TouchableOpacity style={{width:130,height:58,backgroundColor:page === 1?'#EC8F05':'gainsboro',justifyContent:'center',
             alignItems:'center',borderRadius:30}}
             onPress={()=>setPage(1)}>
                   <Text style={{color:page===1?'#fff':'#000',fontWeight:'bold'}}>Student</Text>
-              </TouchableOpacity>
+              </TouchableOpacity> */}
           </View>
         </View>
         <View style={{flexDirection:'row',justifyContent:'center',alignItems:'center',
@@ -47,9 +47,9 @@ const SignupScreen = ({navigation}) => {
             {
                 page === 0?(<CompanySignUp navigation={navigation}/>):(null)
             }
-            {
+            {/* {
                 page === 1?(<StudentSignUp/>):(null)
-            }
+            } */}
             
             </View>
             <View style={styles.signupContainer}>
@@ -57,7 +57,7 @@ const SignupScreen = ({navigation}) => {
                     Already have account?
                 </Text>
                 <Text style={styles.signupText}
-                onPress={()=>navigation.navigate('Signin')}
+                onPress={()=>navigation.navigate('Signup')}
                 >Sign In</Text>
             </View>
             </View>

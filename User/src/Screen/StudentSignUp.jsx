@@ -30,14 +30,14 @@ const StudentSignUp = ({navigation}) => {
       email.trim().toLowerCase(),password
     ).then(res =>{
        
-          db.ref(`/Student`).child(res.user.uid).set({
+          db.ref(`/IDCStudent`).child(res.user.uid).set({
             Studentnumber:Studentnumber,
             email:email.trim().toLowerCase(),
             phonenumber:phonenumber,
             uid:res.user.uid
           })
-          navigation.navigate('Signin')
-          res.user.sendEmailVerification()
+          navigation.navigate('StudentHome')
+        //   res.user.sendEmailVerification()
           })
         }
         catch(error){

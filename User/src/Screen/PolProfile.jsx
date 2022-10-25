@@ -4,10 +4,11 @@ import { Text, View, StyleSheet,TouchableOpacity,  ToastAndroid } from 'react-na
 import { Card } from 'react-native-elements'
 import Icon from 'react-native-vector-icons/Ionicons';
 import { auth } from '../../firebase';
-const PolProfile = () => {
+const PolProfile = ({navigation}) => {
   const onSignout =()=>{
-    auth
-    .signOut()
+    // auth
+    // .signOut()
+    navigation.navigate('Welcome')
     
 }
   return (

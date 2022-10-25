@@ -1,20 +1,13 @@
-
-import React,{useEffect,useState} from 'react'
-import {
-    SafeAreaView, StyleSheet, Text, View, Image, TextInput, TouchableOpacity,
-    FlatList, Dimensions, ImageBackground, StatusBar,  ActivityIndicator
-} from 'react-native'
-
-
-import { ScrollView } from 'react-native'
-import Ionicons from 'react-native-vector-icons/Ionicons'
-import { auth, db } from '../../firebase.jsx'
-import { Divider } from 'react-native-elements'
-const Logbook = ({navigation}) => {
+import { StyleSheet, Text, View } from 'react-native'
+import React, { useState, useEffect, useRef } from 'react'
+import { db,auth } from '../../firebase'
+const StudentHome = () => {
+    const user = auth.currentUser.uid;
+    const [StudentNum,setStudentNum]=useState('')
     const [filteredDataSource, setFilteredDataSource] = useState();
     const [masterDataSource, setMasterDataSource] = useState([]);
     const [Student, setStudent] = useState([])
-    const user = auth.currentUser.uid;
+    const [ComName, setName] = useState('')
     useEffect(() => {
         db.ref('/AcceptedStudents').on('value', snap => {
 
@@ -28,12 +21,13 @@ const Logbook = ({navigation}) => {
                     name: data.name,
                     surname: data.surname, UniversityName: data.UniversityName,
                     completed: data.completed, faculty: data.faculty,Status:data.Status,
-                    monthNum: data.monthNum,user:data.user,
+                    monthNum: data.monthNum,ComName:data.ComName,email,phonenumber,
+                     Duties:data.Duties,location:data.location
                 })
-                const text=user
+                const text=StudentNum
                 if(text){
                  const newData = Student.filter(function(item){
-                     const itemData = item.user ? item.user
+                     const itemData = item.IDnumber ? item.IDnumber
                      :'';
                      const textData = text;
                      return itemData.indexOf( textData)>-1;
@@ -47,6 +41,15 @@ const Logbook = ({navigation}) => {
 
             })
         })
+     
+        db.ref('/IDCStudent/' + user).on('value', snap => {
+
+            setName(snap.val() && snap.val().name);
+            setStudentNum(snap.val().IDnumber)
+            
+        })
+
+
     }, [])
     const Card = ({ element, index }) => {
         return (
@@ -56,10 +59,10 @@ const Logbook = ({navigation}) => {
                       <View style={{ backgroundColor: 'gray', justifyContent: 'flex-start', flexDirection: 'row', padding: 8, alignItems:'center', borderBottomRightRadius:10}}>
                        
                         <Text style={{color: '#fff'}}>
-                          Student Number:
+                          Company Name:
                         </Text>
                         <Text style={{color: '#fff'}}>
-                          {" "}{element.IDnumber}
+                          {" "}{element.ComName}
                         </Text>
                       </View>
                     </View>
@@ -127,24 +130,24 @@ const Logbook = ({navigation}) => {
                   <Divider style={{width: 200, justifyContent:'flex-end', alignItems:'flex-end', alignSelf:'flex-end'}}/>
 
                   {/* description */}
-                  <View style={{ justifyContent: 'center',  padding: 8,marginHorizontal:10 }}>
+                  {/* <View style={{ justifyContent: 'center',  padding: 8,marginHorizontal:10 }}>
                   <TouchableOpacity style={styles.signinButton}
-               onPress={()=>navigation.navigate('LogScreen',{name:element.name,StudentNum:element.IDnumber})}>
-                <Text style={styles.signinButtonText}>Start Logbook</Text>
+              onPress={()=>updateAccept(element.key,'Accepted',element.IDnumber,
+              element.faculty,element.monthNum,element.UniversityName,element.name,
+              element.surname)} >
+                <Text style={styles.signinButtonText}
+                
+                >Accept</Text>
             </TouchableOpacity>
-                  </View>
+                  </View> */}
                   </View>
            </>)
     }
   return (
     <View>
-              <View style={styles.headerContainer}
-            >
-     <Text style={styles.headerTitle}>List of Students you Accepted</Text>
-            </View>
-       <FlatList
+           <FlatList
                     keyExtractor={(_, key) => key.toString()}
-                   
+                   horizontal
                     showsVerticalScrollIndicator={false}
                     contentContainerStyle={{ paddingLeft: 20 }}
                     data={Student}
@@ -154,35 +157,6 @@ const Logbook = ({navigation}) => {
   )
 }
 
-export default Logbook
+export default StudentHome
 
-const styles = StyleSheet.create({
-    signinButton:{
-        backgroundColor:'#4bb543',
-        borderRadius:8,
-        marginHorizontal:20,
-        height:30,
-        justifyContent:'center',
-        alignItems:'center',
-        marginTop:20,
-    },
-    signinButtonText:{
-        fontSize:18,
-        lineHeight:18 * 1.4,
-        color:'#fff',
-        
-    },
-    headerContainer: {
-        flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: 'center',
-        paddingVertical: 20,
-        paddingHorizontal: 20
-    },
-    headerTitle: {
-        fontSize: 20,
-        lineHeight: 20 * 1.4,  
-        textAlign: 'center'
-
-    },
-})
+const styles = StyleSheet.create({})

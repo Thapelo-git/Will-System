@@ -14,7 +14,7 @@ const Visits = () => {
   useEffect(()=>{
 
   
-    db.ref('Student').on('value',snap=>{
+    db.ref('Logbook').on('value',snap=>{
       
       setInterviews({...snap.val() });
       
@@ -36,92 +36,69 @@ const Visits = () => {
   };
   return (
     <div>
-       <div className='heading'>
-        <h2> Reports(Completed tasks)</h2>
-      </div>
-          {Interveiws ? (
-        <Table
-          striped
-          bordered
-          hover
-          size="sm"
-          style={{ marginTop: "10px", width: "100%" }}
-        >
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>Student Number</th>
-              <th>Phone Number</th>
-              <th>Email</th>
-              <th>Name</th>
-              <th>Surname</th>
-              
-              
-              {/* <th>Status</th>
-              <th>Accept</th>
-              <th>Reject</th> */}
-            </tr>
-          </thead>
-          <tbody>
-            {Object.keys(Interveiws).map((id,booking) => (
-
-           
-
-
-
-  
-
-              <tr key={Interveiws.id}>
-                
-              <>
-              
-               
-                  <td>{id}</td>
+     <section>
+    <div className='container'>
+        <div className='heading'>
+                <h4>Evaluation form from companies</h4>
+        </div>
+        <div className='content grid'>
+        {Object.keys(Interveiws).map((id,booking) => (
+          <div className='box btn_shadow'>
+                <tr >
+                  {/* <p>Ticket ID</p> */}
+                  <h4> Company: {Interveiws[id].ComName}</h4>
+                  {/* <div className='viewRow'>
+                    <h4>Email  </h4>
                   <td>{Interveiws[id].email}</td>
-                  <td>{Interveiws[id].phonenumber}</td>
                   
-                  {/* <td>{Interveiws[id].title}</td>
-                  <td>{Interveiws[id].desc}</td>
-                  <td>{Interveiws[id].interviewDate}</td>
-                  <td>{Interveiws[id].interviewTime}</td> */}
-                  <StatusTD type={Interveiws[id].Status}>{Interveiws[id].Status}</StatusTD>
-                  {Interveiws[id].Status === "Pending" ? (
-                    <>
-                      <td style={{ textAlign: "center" }}>
-                        <FaCheckCircle
-                          color="green"
-                          style={{
-                            cursor: "pointer",
-                            fontSize: "20px",
-                          }}
-                          onClick={() => updateBooking(id, "Accepted")}
-                        />
-                      </td>
-                      <td style={{ textAlign: "center" }}>
- 
-                        <FaTimesCircle
-                          color="red"
-                          style={{
-                            cursor: "pointer",
-                            fontSize: "20px",
-                          }}
-                          onClick={() => updateBooking(id, "Rejected")}
-                        />
-                      </td>
-                    </>
-                  ) : (
-                    <></>
-                  )}
+                  </div> */}
+                  <div className='viewRow'>
+                  <h4>Student Name: {Interveiws[id].name}</h4>
                   
+                  </div>
+                  <div className='viewRow'>
+                  <h4>Student Number: {Interveiws[id].StudentNum}</h4>
                  
-                </>
+                  </div>
+                  <div >
+                  <p>1. He/she performed his or her tasks in line
+with what was expected of him/her</p>
+                  <td><h4>{Interveiws[id].Performed}</h4></td>
+                  
+                  </div>
+                  <div >
+                  <p>2. He/she contributed with good ideas that 
+      added value to the work place</p>
+                  <td><h4>{Interveiws[id].Contributed}</h4></td>
+                  
+                  </div>
+                  <div >
+                  <p>3. He/she produced high Quality work</p>
+                  <td><h4>{Interveiws[id].Produced}</h4></td>
+                  
+                  </div>
+                  <div >
+                  <p>4. He/she managed his/her own time well and 
+met deadlines</p>
+                  <td><h4>{Interveiws[id].Managed}</h4></td>
+                  
+                  </div>
                  
+                
                  
-              </tr>
-             
-            ))}
-          </tbody>
-        </Table>):(<h1>Nothing</h1>)}
+                
+                </tr>
+                </div>
+                ))}
+            {/* {
+            Data.map((val,index)=>{
+                return <Card key={index} name={val.name} email={val.email} location={val.location}
+                Duties={val.Duties} contactPerson={val.contactPerson} contactPhonenum={val.contactPhonenum}/>
+            })
+            } */}
+        </div>
+    </div>
+   </section>
     </div>
   )
 }

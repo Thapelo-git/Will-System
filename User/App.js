@@ -13,6 +13,7 @@ import SearchScreen from './src/Screen/SearchScreen';
 import SignupSteps from './src/Screen/SignupSteps';
 import ForgetPassword from './src/Screen/ForgetPassword';
 import LogScreen from './src/Screen/LogScreen';
+import StudentHome from './src/Screen/StudentHome';
 const Stack = createNativeStackNavigator()
 export default function App() {
   const [signedIn,setSignedIn]=useState(false)
@@ -29,7 +30,7 @@ export default function App() {
 });
   return(
       <NavigationContainer>
-          {!signedIn ?(
+          {/* {!signedIn ?(
               <>
               <Stack.Navigator screenOptions={{headerShown:false}}>
                <Stack.Screen name="Splash" component={SplashScreen} />
@@ -46,23 +47,26 @@ export default function App() {
            <Stack.Navigator screenOptions={{headerShown:false}}>
           
 
-          {/* <Stack.Screen name="homeScreen" component={AuthStack}/>
-          <Stack.Screen name="UserDetails" component={UserDetails}/> */}
+      
           <Stack.Screen name="Companyhome" component={TabScreen}/>
            <Stack.Screen name="Search" component={SearchScreen}/>
            <Stack.Screen name="LogScreen" component={LogScreen}/>
-          {/*<Stack.Screen name="PolLocation" component={PolLocation}/>
-          <Stack.Screen name="PolProfile" component={PolProfile}/>
-          <Stack.Screen name="PolUserDetails" component={PolUserDetails}/>
           
-          <Stack.Screen name="Visisthistory" component={Visitshistory}/>
-          <Stack.Screen name="Visistupcoming" component={Visitsupcoming}/>
-          <Stack.Screen name="Notification" component={Notification}/>
-          <Stack.Screen name="AccountDetails" component={AccountDetails}/> */}
       </Stack.Navigator>
               </>
-          )}
-
+          )} */}
+    <Stack.Navigator screenOptions={{headerShown:false}}>
+               <Stack.Screen name="Splash" component={SplashScreen} />
+              <Stack.Screen name="Welcome" component={GetStarted}/> 
+              <Stack.Screen name="Signup" component={SignupScreen}/> 
+              <Stack.Screen name="Signin" component={SigninScreen}/> 
+              <Stack.Screen name="SignupSteps" component={SignupSteps}/>
+              <Stack.Screen name="forgetPassword" component={ForgetPassword}/>
+              <Stack.Screen name="Companyhome" component={TabScreen}/>
+           <Stack.Screen name="Search" component={SearchScreen}/>
+           <Stack.Screen name="LogScreen" component={LogScreen}/>
+           <Stack.Screen name="StudentHome" component={StudentHome}/>
+              </Stack.Navigator>
       </NavigationContainer>
   )
 }

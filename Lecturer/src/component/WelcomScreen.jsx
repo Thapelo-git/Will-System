@@ -8,10 +8,10 @@ function WelcomScreen() {
     const [page,setPage]=useState(0)
   return (
     <div className='cover'>
-        <div className='logo-container'>
+        {/* <div className='logo-container'>
         <img  src={Logo} className="logoH"/>
-        {/* <h1>Welco</h1> */}
-        </div>
+       
+        </div> */}
         <div className='form-cover'>
             <div className='button-container'>
                 {/* className='Regis-button' '#EC8F05' */}

@@ -45,6 +45,10 @@ const searchFilterFunction =(text)=>{
       setSearchtext(text)
   }
 }
+const onDelete =(id)=>{
+  db.ref(`/Student/${id}`).remove()
+ 
+ }
   return (
     <div className='dashboard_cover'>
         <div className='addbutton_cover'>
@@ -74,7 +78,8 @@ const searchFilterFunction =(text)=>{
             <p>{filteredDataSource[id].name} </p>
             <p>{filteredDataSource[id].surname}</p>
             <p>{filteredDataSource[id].UniversityName}</p>
-            <Link to={`viewuser/${id}`}><i className='fas fa-chevron-right'></i></Link>
+            <button className='deletebtn' onClick={()=>onDelete(id)}>Delete</button>
+            {/* <Link to={`viewuser/${id}`}><i className='fas fa-chevron-right'></i></Link> */}
             
             </div>
              )
