@@ -52,20 +52,20 @@ const SigninScreen = ({navigation}) => {
             onPress={()=>setPage(0)}>
                   <Text style={{color:page===0?'#fff':'#000',fontWeight:'bold'}}>Company</Text>
               </TouchableOpacity>
-              {/* <TouchableOpacity style={{width:130,height:58,backgroundColor:page === 1?'#EC8F05':'gainsboro',justifyContent:'center',
+              <TouchableOpacity style={{width:130,height:58,backgroundColor:page === 1?'#EC8F05':'gainsboro',justifyContent:'center',
             alignItems:'center',borderRadius:30}}
             onPress={()=>setPage(1)}>
                   <Text style={{color:page===1?'#fff':'#000',fontWeight:'bold'}}>Student</Text>
-              </TouchableOpacity> */}
+              </TouchableOpacity>
           </View>
           <View style={{flexDirection:'row',justifyContent:'center',alignItems:'center',
         width:'100%'}}>
             {
                 page === 0?(<CompanySignIn/>):(null)
             }
-            {/* {
+            {
                 page === 1?(<StudentSignIn/>):(null)
-            } */}
+            }
             
             </View>
             <View style={styles.signupContainer}>
@@ -74,7 +74,7 @@ const SigninScreen = ({navigation}) => {
                 </Text>
                 <TouchableOpacity   
                 onPress={()=>navigation.goBack()}
-                // {()=>navigation.navigate('Signin')}
+                // onPress={()=>navigation.navigate('Signin')}
                 >
                 <Text style={styles.signupText}
         

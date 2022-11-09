@@ -54,7 +54,7 @@ const onDelete =(id)=>{
         <div className='addbutton_cover'>
             <Link to="AddScreen">
             <button className='button_Add'>
-                <h3 className='button_text'>Add New Student</h3>
+                <p className='button_text'>Add New Student</p>
             </button>
             </Link>
             </div>

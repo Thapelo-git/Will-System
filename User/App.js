@@ -14,20 +14,22 @@ import SignupSteps from './src/Screen/SignupSteps';
 import ForgetPassword from './src/Screen/ForgetPassword';
 import LogScreen from './src/Screen/LogScreen';
 import StudentHome from './src/Screen/StudentHome';
+import AdminHome from './src/Screen/AdminHome';
+import RegisteredC from './src/Screen/RegisteredC';
 const Stack = createNativeStackNavigator()
 export default function App() {
-  const [signedIn,setSignedIn]=useState(false)
+//   const [signedIn,setSignedIn]=useState(false)
 
-  auth.onAuthStateChanged((user)=>{
-    if(user){
-        setSignedIn(true);
-       console.log(user.uid,"user------------")
+//   auth.onAuthStateChanged((user)=>{
+//     if(user){
+//         setSignedIn(true);
+//        console.log(user.uid,"user------------")
      
-    }else{
+//     }else{
      
-        setSignedIn(false);
-    }
-});
+//         setSignedIn(false);
+//     }
+// });
   return(
       <NavigationContainer>
           {/* {!signedIn ?(
@@ -49,8 +51,10 @@ export default function App() {
 
       
           <Stack.Screen name="Companyhome" component={TabScreen}/>
+          <Stack.Screen name="StudentHome" component={StudentHome}/>
            <Stack.Screen name="Search" component={SearchScreen}/>
            <Stack.Screen name="LogScreen" component={LogScreen}/>
+          
           
       </Stack.Navigator>
               </>
@@ -66,6 +70,8 @@ export default function App() {
            <Stack.Screen name="Search" component={SearchScreen}/>
            <Stack.Screen name="LogScreen" component={LogScreen}/>
            <Stack.Screen name="StudentHome" component={StudentHome}/>
+           <Stack.Screen name="AdminHome" component={AdminHome}/>
+           
               </Stack.Navigator>
       </NavigationContainer>
   )

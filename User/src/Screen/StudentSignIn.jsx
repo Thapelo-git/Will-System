@@ -14,8 +14,8 @@ import { auth } from '../../firebase'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 const deviceHeight=Dimensions.get("window").height
 const deviceWidth=Dimensions.get("window").width
-const StudentSignIn = ({navigation}) => {
-    // const navigation =useNavigation()
+const StudentSignIn = () => {
+    const navigation =useNavigation()
     // const [persalnumber,setPersalnumber]=useState()
     const [isPasswordShow,setPasswordShow]=useState(false)
     const ReviewSchem=yup.object({
@@ -36,7 +36,7 @@ const StudentSignIn = ({navigation}) => {
                             await AsyncStorage.setItem("IDCStudent", res.user.uid)
                           
                             // navigation.navigate('Companyhome')
-                            navigation.navigate('StudentHome')
+                            navigation.navigate('AdminHome')
                         } catch (e) {
                             console.log("no data ");
                         }
@@ -244,6 +244,7 @@ marginHorizontal:20
         backgroundColor:'#000',
         borderRadius:8,
         marginHorizontal:20,
+        height:60,
         // height:Display.setHeight(6),
         justifyContent:'center',
         alignItems:'center',
