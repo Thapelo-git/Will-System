@@ -81,7 +81,7 @@ const ModelSearch = ({navigation,bottomopen}) => {
       }
   }
   const updateAccept = (key,status,IDnumber,faculty,monthNum,UniversityName,name,surname) => {
-    db.ref('Student').child(key).update({Status:status})
+    db.ref('Student').child(key).update({Status:'Accepted'})
     .then(()=>db.ref('Student').once('value'))
     .then(snapshot=>snapshot.val())
     .catch(error => ({
@@ -217,7 +217,7 @@ const ModelSearch = ({navigation,bottomopen}) => {
                     <TextInput
                         style={{ fontSize: 18, flex: 1, marginLeft: 10 }}
                         
-                        placeholder="Where to go ?"
+                        placeholder="Search By faculty ?"
                         onChangeText={(text) => searchFilterFunction(text)} />
                   
                 </View>

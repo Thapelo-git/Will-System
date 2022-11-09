@@ -57,7 +57,7 @@ function AddScreen() {
     setState({
       ...initialState,
       [name]:value,
-    })
+    }) 
   }
   const [Status,setStatus]=useState('Pending')
   const [S,setS]=useState()

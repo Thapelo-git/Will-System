@@ -27,7 +27,7 @@ const PolProfile = () => {
                     <View style={{paddingTop: 70, width: '100%', height: 1000}}>
 
                     {/* Account Details */}
-                    <TouchableOpacity >
+                    {/* <TouchableOpacity >
                     <Text style={{paddingBottom: 10}}>
                         My Account
                     </Text>
@@ -49,10 +49,10 @@ const PolProfile = () => {
                         
                     </View>
                     </TouchableOpacity>
-                    <Card.Divider/>
+                    <Card.Divider/> */}
 
                     {/* Other Groups     */}
-                    <Text style={{paddingBottom: 10, paddingTop: 15}}>
+                    {/* <Text style={{paddingBottom: 10, paddingTop: 15}}>
                         Notifications
                     </Text>
                     <View style={{flexDirection: 'row', justifyContent:'space-between'}}>
@@ -70,9 +70,9 @@ const PolProfile = () => {
                         </View>
                     </View>
                     
-                    <Card.Divider/>
+                    <Card.Divider/> */}
 
-                    <TouchableOpacity onPress={()=>navigation.navigate('Help And Support')}>
+                    {/* <TouchableOpacity onPress={()=>navigation.navigate('Help And Support')}>
                     <Text style={{paddingBottom: 10, paddingTop: 15}}>
                         Help
                     </Text>
@@ -91,7 +91,7 @@ const PolProfile = () => {
                         </View>
                     </View>
                     </TouchableOpacity>
-                    <Card.Divider/>
+                    <Card.Divider/> */}
 
                     {/* Logout     */}
 

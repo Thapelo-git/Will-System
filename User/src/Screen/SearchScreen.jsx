@@ -97,7 +97,7 @@ const SearchScreen = ({ navigation }) => {
     }
  
     const updateAccept = (key,status,IDnumber,faculty,monthNum,UniversityName,name,surname) => {
-        db.ref('Student').child(key).update({Status:status})
+        db.ref('Student').child(key).update({Status:"Accepted"})
         .then(()=>db.ref('Student').once('value'))
         .then(snapshot=>snapshot.val())
         .catch(error => ({
