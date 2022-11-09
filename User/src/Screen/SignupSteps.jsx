@@ -10,8 +10,10 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome'
 import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons'
 import { auth,db } from '../../firebase'
 const deviceWidth=Dimensions.get("window").width
+import { useNavigation } from '@react-navigation/native'
 import { ProgressSteps, ProgressStep } from 'react-native-progress-steps';
 const SignupSteps = () => {
+    const navigation =useNavigation()
     const [isPasswordShow,setPasswordShow]=useState(false)
     const phoneRegExp = /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/
     const ReviewSchem=yup.object({
@@ -355,6 +357,7 @@ const styles = StyleSheet.create({
                 borderWidth:0.5,
                 borderColor:'#F5F5F5',
                 justifyContent:'center',
+                width:260,height:60
             },
             inputSubContainer:{
                 flexDirection:'row',
