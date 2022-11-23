@@ -3,7 +3,7 @@ import { StyleSheet, Text, View ,Image,TouchableOpacity,FlatList} from 'react-na
 import { Divider } from 'react-native-elements'
 import { db } from '../../firebase'
 //AdminMonth1
-const Report = () => {
+const AdminMonth1 = () => {
     const [Companies,setCompanies]=useState([])
  
     useEffect(()=>{
@@ -17,18 +17,31 @@ const Report = () => {
                  Companies.push({
                      key:key,
                      ComName:data.ComName,
-                     Contributed:data.Contributed,
+                    
                      StudentNum:data.StudentNum,
                      name:data.name,
                      email:data.email,
-                    Managed:data.Managed,
-                    Performed:data.Performed,
-                   Produced:data.Produced,
+                     
+                    month:data.month,task1:data.task1,
+                    Week1:data.Week1,Day1:data.Day1,Evaluation1:data.Evaluation1,
+                    task2:data.task1,Week2:data.Week2,Day2:data.Day2,Evaluation2:data.Evaluation2
+                    ,Absent:data.Absent,Reason:data.Reason
                  })
                 })
                 
-            
-                  setCompanies(Companies)
+                const text='Month1'
+                if(text){
+                 const newData = Companies.filter(function(item){
+                     const itemData = item.month ? item.month
+                     :'';
+                     const textData = text;
+                     return itemData.indexOf( textData)>-1;
+     
+                 })
+                 setCompanies(newData)
+                 
+               }
+                  
              
                  
                 }
@@ -55,32 +68,76 @@ const Report = () => {
                     <Divider style={{width: 90, justifyContent:'flex-end', alignItems:'flex-end', alignSelf:'flex-end'}}/>
            
                     <View>
-  <Text style={styles.titles}>1. He/she performed his or her tasks in line with what was expected of him/her</Text>
+  <Text style={styles.titles}>Summary of Tasks 1</Text>
   <Text style={{color:'#032B7A',fontWeight:'bold',fontSize:15}}>
-  {item.Performed}   </Text>
+  {item.task1}   </Text>
   
   
   </View>
-          
-                      <View>
-  <Text style={styles.titles}>2. He/she contributed with good ideas that added value to the work place</Text>
-  <Text style={{color:'#032B7A',fontWeight:'bold',fontSize:15}}>
-  {item.Contributed}   </Text>
-  
-  
-  </View>
-  
+  <View style={{flexDirection:'row',}}>
   <View>
-  <Text style={styles.titles}>3. He/she produced high Quality work</Text>
+  <Text style={styles.titles}>Days 1</Text>
   <Text style={{color:'#032B7A',fontWeight:'bold',fontSize:15}}>
-  {item.Produced}   </Text>
+  {item.Day1}   </Text>
   
   
   </View>
   <View>
-  <Text style={styles.titles}>4. He/she managed his/her own time well and met deadlines</Text>
+  <Text style={styles.titles}>Weeks </Text>
   <Text style={{color:'#032B7A',fontWeight:'bold',fontSize:15}}>
-  {item.Managed}   </Text>
+  {item.Week1}   </Text>
+  
+  
+  </View>
+  <View>
+  <Text style={styles.titles}>Evaluation </Text>
+  <Text style={{color:'#032B7A',fontWeight:'bold',fontSize:15}}>
+  {item.Evaluation1}   </Text>
+  
+  
+  </View>
+  </View>     
+  <View>
+  <Text style={styles.titles}>Summary of Tasks 2</Text>
+  <Text style={{color:'#032B7A',fontWeight:'bold',fontSize:15}}>
+  {item.task2}   </Text>
+  
+  
+  </View>
+  <View style={{flexDirection:'row',}}>
+  <View>
+  <Text style={styles.titles}>Days 1</Text>
+  <Text style={{color:'#032B7A',fontWeight:'bold',fontSize:15}}>
+  {item.Day2}   </Text>
+  
+  
+  </View>
+  <View>
+  <Text style={styles.titles}>Weeks </Text>
+  <Text style={{color:'#032B7A',fontWeight:'bold',fontSize:15}}>
+  {item.Week2}   </Text>
+  
+  
+  </View>
+  <View>
+  <Text style={styles.titles}>Evaluation </Text>
+  <Text style={{color:'#032B7A',fontWeight:'bold',fontSize:15}}>
+  {item.Evaluation2}   </Text>
+  
+  
+  </View>
+  </View> 
+  <View>
+  <Text style={styles.titles}>Number of days Absent</Text>
+  <Text style={{color:'#032B7A',fontWeight:'bold',fontSize:15}}>
+  {item.Absent}   </Text>
+  
+  
+  </View>
+  <View>
+  <Text style={styles.titles}>Reason</Text>
+  <Text style={{color:'#032B7A',fontWeight:'bold',fontSize:15}}>
+  {item.Reason}   </Text>
   
   
   </View>
@@ -133,6 +190,6 @@ const Report = () => {
   )
 }
 
-export default Report
+export default AdminMonth1
 
 const styles = StyleSheet.create({})

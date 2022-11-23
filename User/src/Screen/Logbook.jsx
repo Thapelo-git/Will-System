@@ -133,6 +133,16 @@ const Logbook = ({navigation}) => {
                 <Text style={styles.signinButtonText}>Start Logbook</Text>
             </TouchableOpacity>
                   </View>
+                  <View style={{ justifyContent: 'center',  padding: 8,marginHorizontal:10 ,flexDirection:'row'}}>
+                  <TouchableOpacity style={styles.signinButton}
+               onPress={()=>navigation.navigate('Month1',{name:element.name,StudentNum:element.IDnumber})}>
+                <Text style={styles.signinButtonText}>Month1</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.signinButton}
+               onPress={()=>navigation.navigate('Month2',{name:element.name,StudentNum:element.IDnumber})}>
+                <Text style={styles.signinButtonText}>Month2</Text>
+            </TouchableOpacity>
+                  </View>
                   </View>
            </>)
     }
@@ -158,8 +168,10 @@ export default Logbook
 
 const styles = StyleSheet.create({
     signinButton:{
-        backgroundColor:'#4bb543',
-        borderRadius:8,
+      borderWidth:1,
+      borderColor:'#4bb543',
+       
+        width:80,
         marginHorizontal:20,
         height:30,
         justifyContent:'center',
@@ -169,7 +181,7 @@ const styles = StyleSheet.create({
     signinButtonText:{
         fontSize:18,
         lineHeight:18 * 1.4,
-        color:'#fff',
+        color:'#4bb543',
         
     },
     headerContainer: {

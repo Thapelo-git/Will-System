@@ -14,7 +14,7 @@ import { auth } from '../../firebase'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 const deviceHeight=Dimensions.get("window").height
 const deviceWidth=Dimensions.get("window").width
-const StudentSignIn = () => {
+const AdminSignIn = () => {
     const navigation =useNavigation()
     
     const [isPasswordShow,setPasswordShow]=useState(false)
@@ -71,26 +71,7 @@ const StudentSignIn = () => {
                  >
                      {(props)=>(
                          <>
-            {/* <Text style={{fontWeight:'bold'}}>Enter Persal number</Text> */}
-       
-        
-       {/* <View style={styles.inputContainer}>
-           <View style={styles.inputSubContainer}>
-               <Feather name="user" size={22}
- 
-               style={{marginRight:10}}/>
-               
-               <TextInput placeholder="Persal number"
-               selectionColor='gainsboro'
-               onChangeText={props.handleChange('persalnumber')}
-               value={props.values.persalnumber}
-               onBlur={props.handleBlur('persalnumber')}
-               style={styles.inputText}
-               />
-           </View>
-       </View>
-       {props.errors.persalnumber? <Text style={{color:"red"}}>{props.errors.persalnumber}</Text>:null}
-       <View style={{height:15}}></View> */}
+            
                <Text style={{fontWeight:'bold'}}>Email Address</Text>
        
         
@@ -164,7 +145,7 @@ const StudentSignIn = () => {
   )
 }
 
-export default StudentSignIn
+export default AdminSignIn
 
 const styles = StyleSheet.create({
     container:{

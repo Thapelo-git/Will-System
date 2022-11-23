@@ -14,7 +14,7 @@ const AdminHome = () => {
     const onSignout =()=>{
     //   auth.signOut()
       navigation.navigate('Welcome')
-      
+       
   }
   return (
     <View>

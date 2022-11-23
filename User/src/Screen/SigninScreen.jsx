@@ -8,11 +8,12 @@ import Feather from "react-native-vector-icons/Feather"
 import { Images ,Colors} from '../contants'
 import { Display } from '../utils'
 
-
+import { useNavigation } from '@react-navigation/native'
 import CompanySignIn from './CompanySignIn'
 import StudentSignIn from './StudentSignIn'
 const deviceHeight=Dimensions.get("window").height
-const SigninScreen = ({navigation}) => {
+const SigninScreen = () => {
+    const navigation =useNavigation()
     const [isPasswordShow,setPasswordShow]=useState(false)
     const [modalopen,setModalopen]=useState(true)
     const [page,setPage]=useState(0)
@@ -55,7 +56,7 @@ const SigninScreen = ({navigation}) => {
               <TouchableOpacity style={{width:130,height:58,backgroundColor:page === 1?'#EC8F05':'gainsboro',justifyContent:'center',
             alignItems:'center',borderRadius:30}}
             onPress={()=>setPage(1)}>
-                  <Text style={{color:page===1?'#fff':'#000',fontWeight:'bold'}}>Student</Text>
+                  <Text style={{color:page===1?'#fff':'#000',fontWeight:'bold'}}>Admin</Text>
               </TouchableOpacity>
           </View>
           <View style={{flexDirection:'row',justifyContent:'center',alignItems:'center',
@@ -70,15 +71,15 @@ const SigninScreen = ({navigation}) => {
             </View>
             <View style={styles.signupContainer}>
                 <Text style={styles.accountText}>
-                    Don't have account?
+                    Are You A Student Sign In Here?
                 </Text>
                 <TouchableOpacity   
-                onPress={()=>navigation.goBack()}
-                // onPress={()=>navigation.navigate('Signin')}
+              
+                onPress={()=>navigation.navigate('AdminSignUp')}
                 >
                 <Text style={styles.signupText}
         
-                >Sign Up</Text>
+                >Sign In</Text>
            
            </TouchableOpacity>
             </View>

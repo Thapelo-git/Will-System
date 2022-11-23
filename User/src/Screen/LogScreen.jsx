@@ -3,6 +3,7 @@ import React,{useEffect,useState} from 'react'
 import { db,auth } from '../../firebase'
 import {Picker} from '@react-native-picker/picker';
 import { ScrollView } from 'react-native-gesture-handler';
+//Month1
 const LogScreen = ({navigation,route}) => {
     const [StudentNum,setStudentNum]=useState(route.params.StudentNum)
     const [name, setname] = useState(route.params.name)

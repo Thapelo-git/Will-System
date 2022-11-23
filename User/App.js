@@ -16,6 +16,11 @@ import LogScreen from './src/Screen/LogScreen';
 import StudentHome from './src/Screen/StudentHome';
 import AdminHome from './src/Screen/AdminHome';
 import RegisteredC from './src/Screen/RegisteredC';
+import AdminSignIn from './src/Screen/AdminSignIn';
+import AdminSignUp from './src/Screen/AdminSignUp';
+import StudHomeScreen from './src/Screen/StudHomeScreen';
+import Month1 from './src/Screen/Month1';
+import Month2 from './src/Screen/Month2';
 const Stack = createNativeStackNavigator()
 export default function App() {
 //   const [signedIn,setSignedIn]=useState(false)
@@ -71,7 +76,11 @@ export default function App() {
            <Stack.Screen name="LogScreen" component={LogScreen}/>
            <Stack.Screen name="StudentHome" component={StudentHome}/>
            <Stack.Screen name="AdminHome" component={AdminHome}/>
-           
+           <Stack.Screen name="AdminSignIn" component={AdminSignIn}/>
+           <Stack.Screen name="AdminSignUp" component={AdminSignUp}/>
+           <Stack.Screen name="StudHomeScreen" component={StudHomeScreen}/>
+           <Stack.Screen name="Month1" component={Month1}/>
+           <Stack.Screen name="Month2" component={Month2}/>
               </Stack.Navigator>
       </NavigationContainer>
   )

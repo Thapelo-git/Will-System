@@ -2,7 +2,7 @@ import React,{useState,useEffect,Component} from 'react'
 import { StyleSheet, Text, View ,Image,TouchableOpacity,FlatList} from 'react-native'
 import { Divider } from 'react-native-elements'
 import { db } from '../../firebase'
-//Report
+//AdminMonth1
 const RegisteredC = () => {
     const [Companies,setCompanies]=useState([])
  

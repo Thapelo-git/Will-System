@@ -293,7 +293,7 @@ const SearchScreen = ({ navigation }) => {
             </View>
          
             <View style={{ paddingVertical: 20 }}>
-
+{/* 
                 <Text style={styles.titles}>Choose by University</Text>
 
                 <Picker
@@ -308,13 +308,13 @@ const SearchScreen = ({ navigation }) => {
                     <Picker.Item label="UJ" value="UJ" />
                     <Picker.Item label="Wits" value="Wits" />
                     <Picker.Item label="UNISA" value="UNISA" />
-                </Picker>
+                </Picker> */}
                 <FlatList
                     keyExtractor={(_, key) => key.toString()}
                    horizontal
                     showsVerticalScrollIndicator={false}
                     contentContainerStyle={{ paddingLeft: 20 }}
-                    data={StudentsList}
+                    data={masterDataSource}
                     renderItem={({ item, index }) => <Card element={item} index={index} />}
                 />
 

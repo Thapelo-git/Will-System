@@ -10,6 +10,8 @@ import Ionicons from 'react-native-vector-icons/Ionicons'
 import Feather from 'react-native-vector-icons/Feather'
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
 import { Divider } from 'react-native-paper';
+import AdminMonth1 from './AdminMonth1';
+import AdminMonth2 from './AdminMonth2';
 const { width } = Dimensions.get("screen")
 const cardWidth = width / 1.8
 const AdminAdd = ({navigation}) => {
@@ -72,126 +74,52 @@ const AdminAdd = ({navigation}) => {
    
   
   };
+  const [page,setPage]=useState(0)
   return (
     <View>
-        <View style={{ backgroundColor: '#fff', justifyContent:'flex-start', flexDirection: 'row', padding: 8, alignItems:'center'}}>
-        <View style={styles.inputContainer}>
-                <View style={styles.inputSubContainer}>
-                    
-                    
-                    <TextInput placeholder="Enter Name"
-                    selectionColor='gainsboro'
-                    style={styles.inputText}
-                  
-                    onChangeText={(text)=>setStudentName(text)}
-             value={name}
-                    />
-                </View>
-            </View>
-            <View style={styles.inputContainer}>
-                <View style={styles.inputSubContainer}>
-                    
-                    
-                    <TextInput placeholder="Enter Surname"
-                    selectionColor='gainsboro'
-                    style={styles.inputText}
-                    
-                    onChangeText={(text)=>setSurname(text)}
-             value={surname}
-                    />
-                </View>
-            </View>   
-        </View>
-        <View style={{ backgroundColor: '#fff', justifyContent:'flex-start', flexDirection: 'row', padding: 8, alignItems:'center'}}>
-        <View style={styles.inputContainer}>
-                <View style={styles.inputSubContainer}>
-                    
-                    
-                    <TextInput placeholder="Student Number"
-                    selectionColor='gainsboro'
-                    style={styles.inputText}
-                    keyboardType='numeric'
-                    onChangeText={(text)=>setIDnumber(text)}
-             value={IDnumber}
-                    />
-                </View>
-            </View>
-            <View style={styles.inputContainer}>
-                <View style={styles.inputSubContainer}>
-                    
-                    
-                    <TextInput placeholder="Enter Faculty"
-                    selectionColor='gainsboro'
-                    style={styles.inputText}
-                    
-                    onChangeText={(text)=>setFaculity(text)}
-             value={faculty}
-                    />
-                </View>
-            </View>   
-        </View>
-      <View style={{ backgroundColor: '#fff', justifyContent:'flex-start', flexDirection: 'row', padding: 8, alignItems:'center'}}>
-      <View>
-<Text style={styles.titles}>University Name:</Text>
-
-<Picker
-     selectedValue={UniversityName}
-     style={{ width: 160, height: 50, backgroundColor: '#eee' }}
-     onValueChange={(text)=>setUniversityName(text)}   >
-     
-    <Picker.Item label="select" value="" />
-    <Picker.Item label="TUT" value="TUT" />
-    <Picker.Item label="UL" value="UL" />
-    <Picker.Item label="UP" value="UP" />
-    <Picker.Item label="UJ" value="UJ" />
-    <Picker.Item label="VUT" value="VUT" />
-    <Picker.Item label="Wits" value="Wits" />
-    <Picker.Item label="UNISA" value="UNISA" />
-    <Picker.Item label="UCT" value="UCT" />
-</Picker>
-</View>
-<View>
-<Text style={styles.titles}>Student completed all modules ?</Text>
-
-<Picker
-     selectedValue={completed}
-     style={{ width: 160, height: 50, backgroundColor: '#eee' }}
-     onValueChange={(text)=>setCompleted(text)}   >
-    <Picker.Item label="select" value="" />
-    <Picker.Item label="No" value="No" />
-    <Picker.Item label="Yes" value="Yes" />
-    
-</Picker>
-</View>
+      <View style={{justifyContent:'center',alignItems:'center',}}>
+      <View style={{flexDirection:'row',justifyContent:'center',alignItems:'center',
+    width:250,height:60,padding:10}}>
+          <TouchableOpacity style={{width:80,height:45,borderColor:page === 0?'#3EA055':'gainsboro',justifyContent:'center',
+        alignItems:'center',borderWidth:1}} 
+        onPress={()=>setPage(0)}>
+              <Text style={{color:page===0?'#3EA055':'gainsboro',fontWeight:'bold'}}>Month1</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={{width:80,height:45,borderColor:page === 1?'#3EA055':'gainsboro',justifyContent:'center',
+        alignItems:'center',borderWidth:1}} 
+        onPress={()=>setPage(1)}>
+              <Text style={{color:page===1?'#3EA055':'gainsboro',fontWeight:'bold'}}>Month2</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={{width:80,height:45,borderColor:page === 2?'#3EA055':'gainsboro',justifyContent:'center',
+        alignItems:'center',borderWidth:1}}
+        onPress={()=>setPage(2)}>
+              <Text style={{color:page===2?'#3EA055':'gainsboro',fontWeight:'bold'}}>Month3</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={{width:80,height:45,borderColor:page === 3?'#3EA055':'gainsboro',justifyContent:'center',
+        alignItems:'center',borderWidth:1}}
+        onPress={()=>setPage(3)}>
+              <Text style={{color:page===3?'#3EA055':'gainsboro',fontWeight:'bold'}}>IDC Students</Text>
+          </TouchableOpacity>
       </View>
-      <Text style={{marginVertical:10}}>Total number of Months required </Text>
-            <View style={styles.inputContainer}>
-                <View style={styles.inputSubContainer}>
-                    
-                    
-                    <TextInput placeholder="month number"
-                    selectionColor='gainsboro'
-                    style={styles.inputText}
-                    keyboardType='numeric'
-                    onChangeText={(text)=>setMonthNum(text)}
-             value={monthNum}
-                    />
-                </View>
-            </View>
-            <View>
-
-
-
-</View>
-<View style={{ justifyContent: 'center',  padding: 8,marginHorizontal:10 }}>
-                  <TouchableOpacity style={styles.signinButton}
-              onPress={()=>addPrice()} >
-                <Text style={styles.signinButtonText}>Add </Text>
-            </TouchableOpacity>
-                  </View>
-      
+      <View style={{
+    width:'100%',}}>
+          {
+            page === 0?(<AdminMonth1/>):(null)
+        }
+      {
+            page === 1?(<AdminMonth2/>):(null)
+        }
+    
+         {/* {
+            page === 2?(<Report/>):(null)
+        }
+         {
+            page === 3?(<StudentList/>):(null)
+        } */}
         
+        </View>
       
+        </View>
     </View>
   )
 }
