@@ -22,7 +22,7 @@ const StudentList= ({navigation}) => {
 
     const user = auth.currentUser.uid;
     useEffect(() => {
-        db.ref('/Student').on('value', snap => {
+        db.ref('/Appointment').on('value', snap => {
 
             const Student = []
             snap.forEach(action => {
@@ -30,9 +30,9 @@ const StudentList= ({navigation}) => {
                 const data = action.val()
                 Student.push({
                     key: key,
-                    name:data.name,surname:data.surname,
-                    IDnumber:data.IDnumber,UniversityName:data.UniversityName,
-                    completed:data.completed, monthNum:data.monthNum,faculty:data.faculty,
+                    email:data.email,interviewDate:data.interviewDate,
+                    interviewTime:data.interviewTime,title:data.title,
+             
                     Status:data.Status
                 })
                 setStudent(Student)
@@ -46,7 +46,7 @@ const StudentList= ({navigation}) => {
     const handleDelete=(key)=>{
       Alert.alert('Confirm','Are you sure you want to delete?',[
         {text:'Yes',
-       onPress:()=>db.ref('Student').child(key).remove(),
+       onPress:()=>db.ref('Appointment').child(key).remove(),
       },
       {text:'No'},
       ]);
@@ -61,10 +61,10 @@ const StudentList= ({navigation}) => {
                       <View style={{ backgroundColor: '#fff', justifyContent: 'flex-start', flexDirection: 'row', padding: 8, alignItems:'center', borderBottomRightRadius:10}}>
                        
                         <Text >
-                          Student Number:
+                          
                         </Text>
                         <Text >
-                          {" "}{element.IDnumber}
+                          {" "}{element.email}
                         </Text>
                       </View>
                     </View>
@@ -76,28 +76,28 @@ const StudentList= ({navigation}) => {
                     <View style={{ backgroundColor: '#fff', justifyContent: 'flex-end', flexDirection: 'column', padding: 8, alignItems:'center'}}>
                       {/* <Ionicons name="documents" color='#333' size={20} /> */}
                       <Text style={{paddingHorizontal: 5,color:'#333'}}>
-                      Name 
+                     Date
                       </Text>
                       <Text style={{paddingHorizontal: 5,color:'#333'}}>
-                        {element.name}  
+                        {element.interviewDate}  
                       </Text>
                     </View>
                     <View style={{ backgroundColor: '#fff', justifyContent:'flex-start', flexDirection: 'column', padding: 8, alignItems:'center'}}>
                     <Text style={{paddingHorizontal: 5,color:'#333'}}>
-                       Surname  
+                       Time 
                       </Text>
                       <Text style={{paddingHorizontal: 5,color:'#333'}}>
-                       {element.surname}  
+                       {element.interviewTime}  
                       </Text>
                     </View>
                     </View>
                     <Divider style={{width: 120, justifyContent:'flex-end', alignItems:'flex-end', alignSelf:'flex-end'}}/>
                     <View style={{ backgroundColor: '#fff', justifyContent:'flex-start', flexDirection: 'column', padding: 8, alignItems:'center'}}>
                     <Text style={{paddingHorizontal: 5,color:'#333'}}>
-                       University Name 
+                       Description 
                       </Text>
                       <Text style={{paddingHorizontal: 5,color:'#333'}}>
-                       {element.UniversityName}  
+                       {element.title}  
                       </Text>
                     </View>
                     <Divider style={{width: 120, justifyContent:'flex-end', alignItems:'flex-end', alignSelf:'flex-end'}}/>

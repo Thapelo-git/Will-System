@@ -12,6 +12,8 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
 import { Divider } from 'react-native-paper';
 import AdminMonth1 from './AdminMonth1';
 import AdminMonth2 from './AdminMonth2';
+import AdminMonth3 from './AdminMonth3';
+import AdminMonth4 from './AdminMonth4';
 const { width } = Dimensions.get("screen")
 const cardWidth = width / 1.8
 const AdminAdd = ({navigation}) => {
@@ -98,7 +100,7 @@ const AdminAdd = ({navigation}) => {
           <TouchableOpacity style={{width:80,height:45,borderColor:page === 3?'#3EA055':'gainsboro',justifyContent:'center',
         alignItems:'center',borderWidth:1}}
         onPress={()=>setPage(3)}>
-              <Text style={{color:page===3?'#3EA055':'gainsboro',fontWeight:'bold'}}>IDC Students</Text>
+              <Text style={{color:page===3?'#3EA055':'gainsboro',fontWeight:'bold'}}>Month4</Text>
           </TouchableOpacity>
       </View>
       <View style={{
@@ -110,12 +112,12 @@ const AdminAdd = ({navigation}) => {
             page === 1?(<AdminMonth2/>):(null)
         }
     
-         {/* {
-            page === 2?(<Report/>):(null)
+         {
+            page === 2?(<AdminMonth3/>):(null)
         }
          {
-            page === 3?(<StudentList/>):(null)
-        } */}
+            page === 3?(<AdminMonth4/>):(null)
+        }
         
         </View>
       

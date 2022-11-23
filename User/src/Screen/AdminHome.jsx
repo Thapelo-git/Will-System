@@ -7,6 +7,7 @@ import RegisteredC from './RegisteredC'
 import Report from './Report'
 import AdminAdd from './AdminAdd'
 import StudentList from './StudentList'
+import Appointment from './Appointment'
 //AdminHome
 const AdminHome = () => {
     const navigation =useNavigation()
@@ -50,12 +51,12 @@ const AdminHome = () => {
           <TouchableOpacity style={{width:80,height:45,borderColor:page === 2?'#3EA055':'gainsboro',justifyContent:'center',
         alignItems:'center',borderWidth:1}}
         onPress={()=>setPage(2)}>
-              <Text style={{color:page===2?'#3EA055':'gainsboro',fontWeight:'bold'}}>Logbook Report</Text>
+              <Text style={{color:page===2?'#3EA055':'gainsboro',fontWeight:'bold'}}>Set Appointment</Text>
           </TouchableOpacity>
           <TouchableOpacity style={{width:80,height:45,borderColor:page === 3?'#3EA055':'gainsboro',justifyContent:'center',
         alignItems:'center',borderWidth:1}}
         onPress={()=>setPage(3)}>
-              <Text style={{color:page===3?'#3EA055':'gainsboro',fontWeight:'bold'}}>IDC Students</Text>
+              <Text style={{color:page===3?'#3EA055':'gainsboro',fontWeight:'bold'}}>Appointments</Text>
           </TouchableOpacity>
       </View>
       <View style={{
@@ -68,7 +69,7 @@ const AdminHome = () => {
         }
     
          {
-            page === 2?(<Report/>):(null)
+            page === 2?(<Appointment/>):(null)
         }
          {
             page === 3?(<StudentList/>):(null)
